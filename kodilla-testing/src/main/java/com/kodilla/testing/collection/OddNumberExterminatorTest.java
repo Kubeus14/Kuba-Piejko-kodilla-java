@@ -1,3 +1,25 @@
+//zadanie
+package com.kodilla.testing.collection;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class OddNumbersExterminator {
+    public List<Integer> exterminate(List<Integer> numbers){
+        List<Integer>oddNumbersList = new ArrayList<>();
+
+        for(int number : numbers){
+            if(number%2==0){
+                oddNumbersList.add(number);
+            }
+        }
+        return oddNumbersList;
+    }
+}
+
+
+
+// test do zadania
 package com.kodilla.testing.collection;
 import org.junit.After;
 import org.junit.Assert;
