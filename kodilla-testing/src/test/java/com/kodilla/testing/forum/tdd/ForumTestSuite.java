@@ -35,7 +35,7 @@ class ForumTestSuite {
                 "Hello everyone, this is my first contribution here!");
 
         //Then
-        Assertions.assertEquals(100, forumUser.getPostsQuantity());
+        Assertions.assertEquals(1, forumUser.getPostsQuantity());
     }
     @Test
     void testAddComment() {
@@ -48,7 +48,7 @@ class ForumTestSuite {
         forumUser.addComment(thePost, "mrsmith", "Thank you for all good words!");
 
         //Then
-        Assertions.assertEquals(100, forumUser.getCommentsQuantity());
+        Assertions.assertEquals(1, forumUser.getCommentsQuantity());
     }
     @Test
     void testGetPost() {
