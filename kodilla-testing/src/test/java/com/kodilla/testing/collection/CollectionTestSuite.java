@@ -6,8 +6,6 @@ import org.junit.jupiter.api.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class CollectionTestSuite {
     private static OddNumbersExterminator oddNumbersExterminator;
     @BeforeEach
@@ -25,24 +23,22 @@ public class CollectionTestSuite {
         }
         @DisplayName("when create emptyList and resultList, we check if they are equal")
         @Test
-        public void testOddNumbersExterminatorEmptyList() {
+        public void testOddNumbersExterminatorEmptyList () {
             //Given
             OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-
             List<Integer> emptyList = new ArrayList<>();
             //When
             List<Integer> resultList = oddNumbersExterminator.exterminate(emptyList);
-
             System.out.println("Testing empty list");
             //Then
-            assertEquals(emptyList, resultList);
+            Assertions.assertEquals(emptyList,resultList);
         }
                 @DisplayName("when we create resultList, then we check if it equals secondList")
                 @Test
                 public void testOddNumbersExterminatorNormalList () {
                     //Given
-                    OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-                    ArrayList<Integer> normalList = new ArrayList<>();
+                OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
+                List<Integer> normalList = new ArrayList<>();
                     normalList.add(22);
                     normalList.add(4);
                     normalList.add(13);
@@ -50,19 +46,15 @@ public class CollectionTestSuite {
                     normalList.add(57);
                     normalList.add(46);
 
-                    List<Integer> secondList = new ArrayList<>();
-                        secondList.add(22);
-                        secondList.add(4);
-                        secondList.add(14);
-                        secondList.add(46);
-                        //When
-                    List<Integer> resultList = oddNumbersExterminator.exterminate(normalList);
-                    System.out.println("Testing normal list");
-
+                List<Integer> secondList = new ArrayList<>();
+                    secondList.add(22);
+                    secondList.add(4);
+                    secondList.add(14);
+                    secondList.add(46);
+                    //When
+                List<Integer> resultList = oddNumbersExterminator.exterminate(normalList);
+                    System.out.println("Testing normal List");
                     //Then
-                    assertEquals(secondList, resultList);
-
-
-
+                Assertions.assertEquals(secondList,resultList);
                 }
             }

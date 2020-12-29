@@ -1,7 +1,8 @@
 package com.kodilla.testing.weather.stub;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public interface Temperatures {
-    HashMap<Integer, Double> getTemperatures();
+    Map<String, Double> getTemperatures();
+
 }

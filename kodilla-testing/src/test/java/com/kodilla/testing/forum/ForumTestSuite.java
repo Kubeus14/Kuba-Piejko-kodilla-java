@@ -27,7 +27,7 @@ class ForumTestSuite {
             "then getRealName should return real user name"
     )
    @Test
-    void testCaseRealName(){
+    void testCaseRealName() {
         //Given
         SimpleUser simpleUser = new SimpleUser("theForumUser","John Smith");
         //When
