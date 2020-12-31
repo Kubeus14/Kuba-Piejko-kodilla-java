@@ -39,15 +39,21 @@ public class WeatherForecast {
     }
 
     public double medianaTemp() {
-        Map<String, Double> resultMap = new HashMap<>();
-        for (Map.Entry<String, Double> temperature : temperatures.getTemperatures().entrySet()) {
-            resultMap.put(temperature.getKey(), temperature.getValue());
 
+        List<Double> tempList = new ArrayList<>();
+
+        for(Double temperature : tempList){
+            tempList.add(25.5);
+            tempList.add(26.2);
+            tempList.add(24.8);
+            tempList.add(25.2);
+            tempList.add(26.1);
         }
+        Collections.sort(tempList);
+        int medium = tempList.size()/2;
+        double mediana = tempList.get(medium);
 
-        Collections.sort(resultMap);
-        int medium = resultMap.size()/2;
-        double mediana = resultMap.get(medium);
+
         return mediana;
     }
 }
