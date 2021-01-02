@@ -14,7 +14,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public class testAddTaskListAverageWorkingOnTask {
+public class BoardTestSuite {
 
     public Board prepareTestData() {
         //users
