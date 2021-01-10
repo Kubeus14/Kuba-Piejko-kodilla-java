@@ -5,10 +5,15 @@ import java.util.*;
 public class WeatherForecast {
     private Temperatures temperatures;
 
+
     public WeatherForecast(Temperatures temperatures) {
         this.temperatures = temperatures;
     }
+    public boolean equals(Object o){
+        WeatherForecast wf = (WeatherForecast) o;
+        return this.temperatures.equals(wf.temperatures);
 
+    }
 
     public Map<String, Double> calculateForecast() {
         Map<String, Double> resultMap = new HashMap<>();
@@ -25,35 +30,29 @@ public class WeatherForecast {
 
     public double averageTemp() {
         double sum = 0.0;
-        double avg = 0.0;
-        double avr = 0.0;
+
+
         Map<String, Double> resultMap = new HashMap<>();
         for (Map.Entry<String, Double> temperature : temperatures.getTemperatures().entrySet()) {
             resultMap.put(temperature.getKey(), temperature.getValue());
-            avg = sum += temperature.getValue();
+             sum += temperature.getValue();
 
         }
-        avr = avg /= resultMap.size();
-        System.out.println(avr);
-        return avr;
+         double avg = sum/(double)resultMap.size();
+        System.out.println(avg);
+        return avg;
     }
 
     public double medianaTemp() {
 
-        List<Double> tempList = new ArrayList<>();
+        List<Double> temps = new ArrayList<>(temperatures.getTemperatures().values());
 
-        for(Double temperature : tempList){
-            tempList.add(25.5);
-            tempList.add(26.2);
-            tempList.add(24.8);
-            tempList.add(25.2);
-            tempList.add(26.1);
-        }
-        Collections.sort(tempList);
-        int medium = tempList.size()/2;
-        double mediana = tempList.get(medium);
+        Collections.sort(temps);
+        int medium = temps.size()/2;
+        double mediana = temps.get(medium);
+
+       return mediana;
 
 
-        return mediana;
     }
 }

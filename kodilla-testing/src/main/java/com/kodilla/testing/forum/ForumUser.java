@@ -1,19 +1,37 @@
 package com.kodilla.testing.forum;
 import java.util.ArrayList;
 import java.util.LinkedList;
-
 import java.util.List;
+import java.util.Objects;
+
 public class ForumUser {
     private String name;
     private String realName;
+    private int pesel;
     private List<ForumPost> posts = new ArrayList<>();
     private List<ForumComment> comments = new LinkedList<>();
 
-    public ForumUser(String name, String realName) {
+    public boolean equals(Object o){
+        ForumUser fu = (ForumUser) o;
+        return (name.equals(fu.name))&&
+                (realName.equals(fu.realName))&&
+                (pesel== fu.pesel);
+    }
+//    public int hashCode(){
+//      return Objects.hash(name,realName);
+//    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, realName,pesel);
+    }
+
+    public ForumUser(String name, String realName,int pesel) {
         //name visible on forum
         this.name = name;
         //real name of the user
         this.realName = realName;
+        this.pesel=pesel;
     }
 
     public void addPost(String author, String postBody) {
