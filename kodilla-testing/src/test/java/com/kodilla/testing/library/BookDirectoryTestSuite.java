@@ -128,5 +128,3 @@ public class BookDirectoryTestSuite {
         return resultList;
     }
 }
-
-

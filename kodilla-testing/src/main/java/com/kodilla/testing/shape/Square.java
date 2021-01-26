@@ -1,7 +1,7 @@
 package com.kodilla.testing.shape;
 
-class Square implements Shape {
-    private final static String name = "Square";
+class Square implements Shape{
+    private final static String name="Square";
     private double edgeLength;
 
     public Square(double edgeLength) {
@@ -23,14 +23,12 @@ class Square implements Shape {
         long temp = Double.doubleToLongBits(edgeLength);
         return (int) (temp ^ (temp >>> 32));
     }
-
     @Override
-    public String getShapeName() {
+    public String getShapeName(){
         return name;
     }
-
     @Override
-    public double getField() {
-        return Math.pow(edgeLength, 2);
+    public double getField(){
+        return Math.pow(edgeLength,2);
     }
 }

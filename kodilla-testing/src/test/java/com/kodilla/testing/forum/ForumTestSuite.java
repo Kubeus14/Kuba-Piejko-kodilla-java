@@ -27,7 +27,7 @@ class ForumTestSuite {
             "then getRealName should return real user name"
     )
    @Test
-    void testCaseRealName() {
+    void testCaseRealName(){
         //Given
         SimpleUser simpleUser = new SimpleUser("theForumUser","John Smith");
         //When
@@ -40,7 +40,7 @@ class ForumTestSuite {
             "then getUsername should return correct name"
     )
     @Test
-    void testCaseUserName(){
+    void testCaseUserName() {
         //Given
         SimpleUser simpleUser = new SimpleUser("theForumUser","John Smith");
         String expectedResult = "theForumUser";

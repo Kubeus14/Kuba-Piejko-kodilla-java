@@ -11,6 +11,9 @@ public class ForumUser {
     private List<ForumPost> posts = new ArrayList<>();
     private List<ForumComment> comments = new LinkedList<>();
 
+    public ForumUser(String mrsmith, String john_smith) {
+    }
+
     public boolean equals(Object o){
         ForumUser fu = (ForumUser) o;
         return (name.equals(fu.name))&&

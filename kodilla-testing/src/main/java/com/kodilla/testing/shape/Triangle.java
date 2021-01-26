@@ -6,6 +6,12 @@ class Triangle implements Shape {
     private double edgeLengthB;
     private double edgeLengthC;
 
+    public Triangle(double edgeLengthA, double edgeLengthB, double edgeLengthC) {
+        this.edgeLengthA = edgeLengthA;
+        this.edgeLengthB = edgeLengthB;
+        this.edgeLengthC = edgeLengthC;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -30,19 +36,10 @@ class Triangle implements Shape {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
-
-    public Triangle(double edgeLengthA, double edgeLengthB, double edgeLengthC) {
-
-        this.edgeLengthA = edgeLengthA;
-        this.edgeLengthB = edgeLengthB;
-        this.edgeLengthC = edgeLengthC;
-    }
-
     @Override
-    public String getShapeName() {
+    public String getShapeName(){
         return name;
     }
-
     @Override
     public double getField() {
         if (checkTriangleCondition()) {
@@ -67,3 +64,4 @@ class Triangle implements Shape {
         return Math.sqrt(halfOfCircuit * (halfOfCircuit - edgeLengthA) * (halfOfCircuit - edgeLengthB) * (halfOfCircuit - edgeLengthC));
     }
 }
+
