@@ -30,7 +30,7 @@ public class Country {
         return countryName.hashCode();
     }
 
-    public BigDecimal getPeopleQuantity(){
+    public BigDecimal getPeopleQuantity() {
         return peopleQuantity;
     }
 }

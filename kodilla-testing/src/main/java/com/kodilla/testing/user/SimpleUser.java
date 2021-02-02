@@ -1,6 +1,6 @@
 package com.kodilla.testing.user;
 
-public class SimpleUser{
+public class SimpleUser {
     private String username;
     private String realName;
 

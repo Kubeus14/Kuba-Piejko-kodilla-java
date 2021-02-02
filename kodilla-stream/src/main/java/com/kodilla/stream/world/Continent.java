@@ -19,7 +19,7 @@ public class Continent {
         return new ArrayList<>(listOfCountriesOnContinent);
     }
 
-    public boolean addCountry (Country country){
+    public boolean addCountry(Country country) {
         return listOfCountriesOnContinent.add(country);
     }
 }

@@ -1,2 +1,7 @@
-package com.kodilla.testing.mockTraining;public interface Pascals {
+package com.kodilla.testing.mockTraining;
+
+import java.util.Map;
+
+public interface Pascals {
+    Map<String,Double> getResults();
 }

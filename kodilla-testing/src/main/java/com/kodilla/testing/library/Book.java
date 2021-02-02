@@ -2,7 +2,7 @@ package com.kodilla.testing.library;
 
 import java.util.Objects;
 
-public class Book {
+public class Book{
     String title;
     String author;
     int publicationYear;
@@ -36,6 +36,7 @@ public class Book {
     public void setPublicationYear(int publicationYear) {
         this.publicationYear = publicationYear;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -53,7 +54,6 @@ public class Book {
         result = 31 * result + getPublicationYear();
         return result;
     }
-
     @Override
     public String toString() {
         return "Book{" +

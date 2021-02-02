@@ -1,4 +1,5 @@
 package com.kodilla.testing.forum;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,11 +15,11 @@ public class ForumUser {
     public ForumUser(String mrsmith, String john_smith) {
     }
 
-    public boolean equals(Object o){
+    public boolean equals(Object o) {
         ForumUser fu = (ForumUser) o;
-        return (name.equals(fu.name))&&
-                (realName.equals(fu.realName))&&
-                (pesel== fu.pesel);
+        return (name.equals(fu.name)) &&
+                (realName.equals(fu.realName)) &&
+                (pesel == fu.pesel);
     }
 //    public int hashCode(){
 //      return Objects.hash(name,realName);
@@ -26,15 +27,15 @@ public class ForumUser {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, realName,pesel);
+        return Objects.hash(name, realName, pesel);
     }
 
-    public ForumUser(String name, String realName,int pesel) {
+    public ForumUser(String name, String realName, int pesel) {
         //name visible on forum
         this.name = name;
         //real name of the user
         this.realName = realName;
-        this.pesel=pesel;
+        this.pesel = pesel;
     }
 
     public void addPost(String author, String postBody) {

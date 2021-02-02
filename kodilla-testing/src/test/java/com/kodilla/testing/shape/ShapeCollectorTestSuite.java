@@ -6,23 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ShapeCollectorTestSuite {
     @BeforeEach
     public void before() {
         System.out.println("Test Case: begin");
     }
+
     @AfterEach
-    public void after(){
+    public void after() {
         System.out.println("Test Case: end");
     }
+
     @Nested
     @DisplayName("Test Add and Remove")
     class TestAddAndRemove {
         @DisplayName("When we create figure, then we check that figure was added to list")
         @Test
-        public void testAddFigure(){
+        public void testAddFigure() {
             //Given
             ShapeCollector shapeCollector = new ShapeCollector();
             Shape shape = new Square(4);
@@ -42,13 +43,13 @@ public class ShapeCollectorTestSuite {
             //When
             boolean result = shapeCollector.removeFigure(shape);
             //Then
-            assertTrue(result);
             assertEquals(0,shapeCollector.getShapeCollection().size());
         }
     }
+
     @DisplayName("When we create shapeResultList, then we check that is equal with shapeList")
     @Test
-    public void testShowFigures(){
+    public void testShowFigures() {
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
         Shape shape = new Square(4);
@@ -60,9 +61,10 @@ public class ShapeCollectorTestSuite {
         //Then
         assertEquals(shapeList.toString(),shapeResultList.toString());
     }
+
     @DisplayName("When we create shapeResult, then we check that is equal with shape")
     @Test
-    public void testGetFigure(){
+    public void testGetFigure() {
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
         Shape shape = new Square(4);

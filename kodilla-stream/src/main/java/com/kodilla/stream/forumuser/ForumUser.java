@@ -1,5 +1,7 @@
 package com.kodilla.stream.forumuser;
+
 import java.time.LocalDate;
+
 public class ForumUser {
     private final int IDNumber;
     private String name;

@@ -1,7 +1,7 @@
 package com.kodilla.testing.shape;
 
 class Square implements Shape{
-    private final static String name="Square";
+    private final static String name = "Square";
     private double edgeLength;
 
     public Square(double edgeLength) {

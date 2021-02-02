@@ -88,21 +88,7 @@ public class BoardTestSuite {
         Assertions.assertEquals(3, project.getTaskLists().size());
     }
 
-    @Test
-    public void testAddTaskListFindUsersTasks() {
-        //Given
-        Board project = prepareTestData();
-        //When
-        User user = new User("developer1", "Jan Nowak");
-        List<Task> tasks = project.getTaskLists().stream()
-                .flatMap(l -> l.getTasks().stream())
-                .filter(t -> t.getAssignedUser().equals(user))
-                .collect(toList());
-        //Then
-        Assertions.assertEquals(2, tasks.size());
-        Assertions.assertEquals(user, tasks.get(0).getAssignedUser());
-        Assertions.assertEquals(user, tasks.get(1).getAssignedUser());
-    }
+
 
     @Test
     public void testAddTaskListFindOutdatedTasks() {
@@ -144,7 +130,7 @@ public class BoardTestSuite {
     }
 
     @Test
-    public void testAddTaskListAverageWorkingOnTask(){
+    public void testAddTaskListAverageWorkingOnTask() {
         //Given
         Board project = prepareTestData();
         //When
@@ -155,16 +141,16 @@ public class BoardTestSuite {
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(task -> Period.between(task.getCreated(), LocalDate.now()).getDays())
-                .reduce(0, (sum, current)->sum+=current );
+                .reduce(0, (sum, current) -> sum += current);
 
         int tasksQty = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(task -> Period.between(task.getCreated(), LocalDate.now()).getDays())
-                .map(t ->1)
-                .reduce(0, (sum, current)->sum+=current );
+                .map(t -> 1)
+                .reduce(0, (sum, current) -> sum += current);
 
-        double average = sumOfDays/tasksQty;
+        double average = sumOfDays / tasksQty;
 
         double avg = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)

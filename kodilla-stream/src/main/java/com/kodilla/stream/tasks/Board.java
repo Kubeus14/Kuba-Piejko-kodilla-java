@@ -1,6 +1,8 @@
 package com.kodilla.stream.tasks;
+
 import java.util.ArrayList;
 import java.util.List;
+
 public class Board {
     private final List<TaskList> taskLists = new ArrayList<>();
     private final String name;

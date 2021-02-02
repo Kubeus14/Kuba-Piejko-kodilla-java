@@ -36,10 +36,12 @@ class Triangle implements Shape {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
+
     @Override
-    public String getShapeName(){
+    public String getShapeName() {
         return name;
     }
+
     @Override
     public double getField() {
         if (checkTriangleCondition()) {
