@@ -6,30 +6,29 @@ import org.junit.jupiter.api.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CollectionTestSuite {
+public class CollectionTestSuite{
     private static OddNumbersExterminator oddNumbersExterminator;
     @BeforeEach
-    public void before() {
-        System.out.println("Test Case: begin");
+    public void before(){
+        System.out.println("Test case: begin");
     }
     @AfterEach
     public void after(){
-        System.out.println("Test Case: end");
+        System.out.println("Test case: end");
     }
-
     @BeforeAll
     public static void beforeClass(){
-        oddNumbersExterminator = new OddNumbersExterminator();
+        oddNumbersExterminator= new OddNumbersExterminator();
     }
     @DisplayName("when create emptyList and resultList, we check if they are equal")
     @Test
-    public void testOddNumbersExterminatorEmptyList () {
+    public void testOddNumbersExterminatorEmptyList(){
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         List<Integer> emptyList = new ArrayList<>();
         //When
         List<Integer> resultList = oddNumbersExterminator.exterminate(emptyList);
-        System.out.println("Testing empty List");
+        System.out.println("Testing empty list");
         //Then
         Assertions.assertEquals(emptyList,resultList);
     }

@@ -10,6 +10,7 @@ public class OddNumbersExterminator{
             if(number %2==0){
                 oddNumbersList.add(number);
             }
-        }return oddNumbersList;
+        }
+        return oddNumbersList;
     }
 }

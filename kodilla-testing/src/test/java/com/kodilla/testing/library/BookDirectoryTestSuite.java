@@ -34,35 +34,29 @@ public class BookDirectoryTestSuite {
         resultListOfBook.add(book4);
         when(libraryDatabaseMock.listBooksWithCondition("Secret")).thenReturn(resultListOfBook);
         //When
-        List<Book> theBookList = bookLibrary.listBooksWithCondition("Secret");
+        List<Book> theListOfBook = libraryDatabaseMock.listBooksWithCondition("Secret");
         //Then
-        assertEquals(4,theBookList.size());
+        assertEquals(4,theListOfBook.size());
 
     }
 
     @Test
     public void testListBooksWithConditionMoreThan20() {
-        // Given
-        List<Book> resultListOf0Books = new ArrayList<Book>();
-        List<Book> resultListOf15Books = generateListOfNBooks(15);
-        List<Book> resultListOf40Books = generateListOfNBooks(40);
-        when(libraryDatabaseMock.listBooksWithCondition(anyString()))
-                .thenReturn(resultListOf15Books);
-        when(libraryDatabaseMock.listBooksWithCondition("ZeroBooks"))
-                .thenReturn(resultListOf0Books);
-        when(libraryDatabaseMock.listBooksWithCondition("FourtyBooks"))
-                .thenReturn(resultListOf40Books);
-
-        // When
-        List<Book> theListOfBooks0 = bookLibrary.listBooksWithCondition("ZeroBooks");
-        List<Book> theListOfBooks15 = bookLibrary.listBooksWithCondition("Any title");
-        List<Book> theListOfBooks40 = bookLibrary.listBooksWithCondition("FourtyBooks");
-        // Then
-
-        assertEquals(0, theListOfBooks0.size());
-        assertEquals(15, theListOfBooks15.size());
-        assertEquals(0, theListOfBooks40.size());
-
+        //Given
+        List<Book> resultListOf0Book = new ArrayList<>();
+        List<Book> resultListOf15Book = generateListOfNBooks(15);
+        List<Book> resultListOf40Book = generateListOfNBooks(40);
+        when(libraryDatabaseMock.listBooksWithCondition(anyString())).thenReturn(resultListOf15Book);
+        when(libraryDatabaseMock.listBooksWithCondition("Zero books")).thenReturn(resultListOf0Book);
+        when(libraryDatabaseMock.listBooksWithCondition("Fourty books")).thenReturn(resultListOf40Book);
+        //When
+        List<Book> theListOfBook0 = bookLibrary.listBooksWithCondition("Zero books");
+        List<Book> theListOfBook15 = bookLibrary.listBooksWithCondition("Any books");
+        List<Book> theListOfBook40 = bookLibrary.listBooksWithCondition("Fourty books");
+        //Then
+        assertEquals(0,theListOfBook0.size());
+        assertEquals(15,theListOfBook15.size());
+        assertEquals(0,theListOfBook40.size());
 
     }
 

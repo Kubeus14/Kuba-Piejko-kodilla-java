@@ -13,7 +13,6 @@ class WeatherForecastTestSuite{
         int quantityOfSensors = weatherForecast.calculateForecast().size();
         //Then
         Assertions.assertEquals(5,quantityOfSensors);
-
     }
     @Test
     void testAverageTempWithStub(){
@@ -26,13 +25,13 @@ class WeatherForecastTestSuite{
         Assertions.assertEquals(25.56,avrTemp);
     }
     @Test
-    void testMediumTestWithStub(){
+    void testMedianaTempWithStub(){
         //Given
         Temperatures temperatures = new TemperaturesStub();
         WeatherForecast weatherForecast = new WeatherForecast(temperatures);
         //When
         double medianaTest = weatherForecast.medianaTemp();
-        //Given
+        //Then
         Assertions.assertEquals(25.5,medianaTest);
     }
 }

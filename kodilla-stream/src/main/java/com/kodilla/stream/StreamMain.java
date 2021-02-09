@@ -9,11 +9,11 @@ import com.kodilla.stream.iterate.NumbersGenerator;
 import com.kodilla.stream.lambda.ExecuteSaySomething;
 import com.kodilla.stream.lambda.ExpressionExecutor;
 import com.kodilla.stream.lambda.Processor;
+import com.kodilla.stream.person.People;
 import com.kodilla.stream.reference.FunctionalCalculator;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -28,17 +28,18 @@ public class StreamMain {                                                     //
 
         // [4]
         ExpressionExecutor expressionExecutor = new ExpressionExecutor();
-        expressionExecutor.executeExpression(4,4,(a,b)->a+b);
-        expressionExecutor.executeExpression(4,4,(a,b)->a-b);
-        expressionExecutor.executeExpression(4,4,(a,b)->a*b);
-        expressionExecutor.executeExpression(4,4,(a,b)->a/b);
-
+        expressionExecutor.executeExpression(3,4,(a,b)->a+b);
+        expressionExecutor.executeExpression(8,4,(a,b)->a-b);
+        expressionExecutor.executeExpression(8,4,(a,b)->a/b);
+        expressionExecutor.executeExpression(7,3,(a,b)->a*b);
 
         //
-        expressionExecutor.executeExpression(5,5,FunctionalCalculator::multiplyAByB);
-        expressionExecutor.executeExpression(5,5,FunctionalCalculator::divideAByB);
-        expressionExecutor.executeExpression(5,5,FunctionalCalculator::addAToB);
-        expressionExecutor.executeExpression(5,5,FunctionalCalculator::subBFromA);
+        expressionExecutor.executeExpression(4,4,FunctionalCalculator::subAFromB);
+        expressionExecutor.executeExpression(3,3,FunctionalCalculator::addAToB);
+        expressionExecutor.executeExpression(5,4,FunctionalCalculator::multiplyAByB);
+        expressionExecutor.executeExpression(8,4,FunctionalCalculator::divideAByB);
+
+
 
         //exercise 7.1
         PoemBeautifier poemBeautifier = new PoemBeautifier();
@@ -76,32 +77,36 @@ public class StreamMain {                                                     //
 
         //exercise 7.2
         System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(10);
+        NumbersGenerator.generateEven(20);
+
 
         //exercise 7.3
         Forum forum = new Forum();
-        Map<Integer, ForumUser> mapOfForumUsers = forum.getForumUserList().stream()
-                .filter(forumUser -> forumUser.getSex() == 'M')
-                .filter(forumUser -> Period.between(forumUser.getBirthdayDate(), LocalDate.now()).getYears() >= 20)
-                .filter(forumUser -> forumUser.getPostsQty() >= 1)
-                .collect(Collectors.toMap(ForumUser::getIDNumber, ForumUser -> ForumUser));
-
-        mapOfForumUsers.entrySet().stream()
-                .map(entry -> entry.getKey() + ": " + entry.getValue())
+        Map<Integer,ForumUser> mapForumUser = forum.getForumUserList().stream()
+                .filter(forumUser -> forumUser.getSex()=='M')
+                .filter(forumUser -> Period.between(forumUser.getBirthdayDate(),LocalDate.now()).getYears()>=20)
+                .filter(forumUser -> forumUser.getPostsQuantity()>=1)
+                .collect(Collectors.toMap(ForumUser::getIDNumber,ForumUser->ForumUser));
+        mapForumUser.entrySet().stream()
+                .map(entry->entry.getKey()+": "+entry.getValue())
                 .forEach(System.out::println);
+
 
         //M 7.3 People
-
-        //M 7.3 Book
-        BookDirectory theBookDirectory = new BookDirectory();
-        List<Book> theResultListOfBooks = theBookDirectory.getList().stream()
-                .filter(book->book.getYearOfPublication()>2005)
-                .collect(Collectors.toList());
-        System.out.println("# elements: "+theResultListOfBooks.size());
-        theResultListOfBooks.stream()
+        People.getList().stream()
+                .map(String::toUpperCase)
+                .filter(s->s.length()>11)
+                .map(s->s.substring(0,s.indexOf(' ')+2)+" . ")
+                .filter(s->s.substring(0,1).equals("M"))
                 .forEach(System.out::println);
 
-
+        //M 7.3 Book
+        BookDirectory bookDirectory = new BookDirectory();
+        String resultBook = bookDirectory.getList().stream()
+                .filter(book -> book.getYearOfPublication()>2005)
+                .map(Book::toString)
+                .collect(Collectors.joining(",\n","<<",">>"));
+        System.out.println(resultBook);
     }
 }
 

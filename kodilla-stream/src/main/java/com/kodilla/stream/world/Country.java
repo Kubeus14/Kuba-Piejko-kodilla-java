@@ -2,7 +2,7 @@ package com.kodilla.stream.world;
 
 import java.math.BigDecimal;
 
-public class Country {
+public class Country{
     private final String countryName;
     private final BigDecimal peopleQuantity;
 
@@ -10,11 +10,9 @@ public class Country {
         this.countryName = countryName;
         this.peopleQuantity = peopleQuantity;
     }
-
-    public Country(final String countryName) {
+    public Country(final String countryName){
         this(countryName, new BigDecimal("1000001"));
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -29,8 +27,8 @@ public class Country {
     public int hashCode() {
         return countryName.hashCode();
     }
-
-    public BigDecimal getPeopleQuantity() {
+    public BigDecimal getPeopleQuantity(){
         return peopleQuantity;
     }
 }
+
