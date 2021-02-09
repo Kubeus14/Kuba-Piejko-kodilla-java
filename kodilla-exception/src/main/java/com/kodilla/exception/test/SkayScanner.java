@@ -1,6 +1,6 @@
 package com.kodilla.exception.test;
 
-public class App {
+public class SkayScanner {
     public static void main(String[] args) {
         Flight trip1 = new Flight("Balice", "Modlin");
         Flight trip2 = new Flight("Pyrzowice", "Lawica");
