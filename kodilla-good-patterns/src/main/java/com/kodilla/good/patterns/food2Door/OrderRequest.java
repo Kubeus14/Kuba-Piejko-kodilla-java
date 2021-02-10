@@ -3,26 +3,26 @@ package com.kodilla.good.patterns.food2Door;
 import java.util.Map;
 
 public class OrderRequest {
-    private Customer customer;
-    private FoodProducer foodProducer;
-    private Map<Product, Integer> productOrderRequest;
+    private Consumer consumer;
+    private Supplier supplier;
+    private Map<Commodity, Integer> productOrderRequest;
 
 
-    public OrderRequest(Customer customer, FoodProducer foodProducer, Map<Product, Integer> productOrderRequest) {
-        this.customer = customer;
-        this.foodProducer = foodProducer;
+    public OrderRequest(Consumer consumer, Supplier supplier, Map<Commodity, Integer> productOrderRequest) {
+        this.consumer = consumer;
+        this.supplier = supplier;
         this.productOrderRequest = productOrderRequest;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Consumer getConsumer() {
+        return consumer;
     }
 
-    public FoodProducer getFoodProducer() {
-        return foodProducer;
+    public Supplier getSupplier() {
+        return supplier;
     }
 
-    public Map<Product, Integer> getProductOrderRequest() {
+    public Map<Commodity, Integer> getProductOrderRequest() {
         return productOrderRequest;
     }
 }

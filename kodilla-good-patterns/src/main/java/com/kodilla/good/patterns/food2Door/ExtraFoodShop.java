@@ -4,31 +4,25 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class ExtraFoodShop implements FoodProducer {
-    private Map<Product, Integer> productsList;
+public class ExtraFoodShop implements Supplier{
+    private Map<Commodity, Integer> listOfProducts;
+    private Map<Commodity, Integer> makeListOfProducts() {
+        Map<Commodity, Integer> listOfProducts = new HashMap<>();
+        listOfProducts.put(new DairyProduct("Milk", "Cow"), 0);
+        listOfProducts.put(new DairyProduct("Yoghurt", "AppleYoghurt"), 11);
+        listOfProducts.put(new AcssToCook("Sose", "BBQ"), 7);
+        listOfProducts.put(new AcssToCook("Spice", "oregano"), 8);
 
+        return listOfProducts;
+    }
     public ExtraFoodShop() {
-        productsList = createProductList();
+        listOfProducts = makeListOfProducts();
     }
-
-    private Map<Product, Integer> createProductList() {
-        Map<Product, Integer> productsList = new HashMap<>();
-
-        productsList.put(new MeatProduct("pork chop", "pork"), 10);
-        productsList.put(new MeatProduct("knuckle", "pork"), 5);
-        productsList.put(new GrainProduct("millet", true), 20);
-        productsList.put(new GrainProduct("oatmeal", false), 0);
-
-        return productsList;
-    }
-
-    @Override
-    public boolean process(Customer customer, Map<Product, Integer>productsOrders) {
-
-        for (Map.Entry<Product, Integer> entry : productsOrders.entrySet()){
-            Optional<Integer> productQty = Optional.ofNullable(productsList.get(entry.getKey()));
+    public boolean process(Consumer consumer, Map<Commodity,Integer> productOrder){
+        for (Map.Entry<Commodity, Integer> entry : productOrder.entrySet()){
+            Optional<Integer> productQty = Optional.ofNullable(listOfProducts.get(entry.getKey()));
             if (productQty.orElse(0) < entry.getValue()) {
-                System.out.println("Extra Food Shop: We're sorry. Product is unavailable.");
+                System.out.println("We don't have this product now");
                 return false;
             }
         }

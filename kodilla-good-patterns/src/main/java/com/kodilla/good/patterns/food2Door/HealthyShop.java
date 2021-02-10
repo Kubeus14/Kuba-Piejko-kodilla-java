@@ -4,35 +4,35 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class HealthyShop implements FoodProducer{
-    private Map<Product, Integer> productsList;
+public class HealthyShop implements Supplier{
+    private Map<Commodity, Integer> listOfProducts;
 
     public HealthyShop() {
-        productsList = createProductList();
+        listOfProducts = makeListOfProducts();
     }
 
-    private Map<Product, Integer> createProductList() {
+    private Map<Commodity, Integer> makeListOfProducts() {
 
-        Map<Product, Integer> productsList = new HashMap<>();
+        Map<Commodity, Integer> li = new HashMap<>();
 
-        productsList.put(new GlutenFreeProduct("pasta", "Noodles made from rice flour"), 20);
-        productsList.put(new GlutenFreeProduct("corn crisps", "Crisps made from corn flour"), 15);
-        productsList.put(new GrainProduct("spaghetti pasta", true), 20);
-        productsList.put(new GrainProduct("spelt flour", true), 4);
+        listOfProducts.put(new DairyProduct("Milk", "Cow"), 23);
+        listOfProducts.put(new DairyProduct("Cheese", "Gouda"), 0);
+        listOfProducts.put(new AcssToCook("Sauce", "Ketchup"), 17);
+        listOfProducts.put(new AcssToCook("Spice", "Chili"), 5);
 
-        return productsList;
+        return listOfProducts;
     }
 
     @Override
-    public boolean process(Customer customer, Map<Product, Integer> productsOrders) {
+    public boolean process(Consumer consumer, Map<Commodity, Integer> productsOrders) {
         return (productsOrders.size() >= 2 && isProductsAvailable(productsOrders));
     }
 
-    private boolean isProductsAvailable(Map<Product, Integer> productsOrders) {
-        for (Map.Entry<Product, Integer> entry : productsOrders.entrySet()) {
-            Optional<Integer> productQty = Optional.ofNullable(productsList.get(entry.getKey()));
+    private boolean isProductsAvailable(Map<Commodity, Integer> productsOrders) {
+        for (Map.Entry<Commodity, Integer> entry : productsOrders.entrySet()) {
+            Optional<Integer> productQty = Optional.ofNullable(listOfProducts.get(entry.getKey()));
             if (productQty.orElse(0) < entry.getValue()) {
-                System.out.println("Healthy Shop: We're sorry. Product is unavailable.");
+                System.out.println("Sorry we don't have this product");
                 return false;
             }
         }

@@ -1,9 +1,9 @@
 package com.kodilla.good.patterns.food2Door;
 
-public class Customer {
+public class Consumer {
     private String name;
 
-    public Customer(String name) {
+    public Consumer(String name) {
         this.name = name;
     }
 
@@ -16,9 +16,9 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Customer customer = (Customer) o;
+        Consumer consumer = (Consumer) o;
 
-        return getName().equals(customer.getName());
+        return getName().equals(consumer.getName());
     }
 
     @Override
