@@ -2,18 +2,29 @@ package com.kodilla.testing.weather.mock;
 
 import com.kodilla.testing.weather.stub.Temperatures;
 import com.kodilla.testing.weather.stub.WeatherForecast;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-class WeatherForecastWithMock{
+class WeatherForecastTestSuite{
     @Mock
     private Temperatures temperaturesMock;
+    @BeforeEach
+    public void before(){
+        System.out.println("Test case: begin");
+    }
+    @AfterEach
+    public void after(){
+        System.out.println("Test case: after");
+    }
     @Test
     void testCalculateForecastWithMock(){
         //Given
@@ -35,7 +46,6 @@ class WeatherForecastWithMock{
     @Test
     void testAverageTempWithMock(){
         //Given
-        double sum = 0.0;
         Temperatures temperaturesMock = mock(Temperatures.class);
         Map<String,Double> temperaturesMap = new HashMap<>();
         temperaturesMap.put("Rzeszów",25.5);
@@ -43,22 +53,31 @@ class WeatherForecastWithMock{
         temperaturesMap.put("Wroclaw", 24.8);
         temperaturesMap.put("Warszawa", 25.2);
         temperaturesMap.put("Gdansk", 26.1);
-        for(Map.Entry<String,Double> temperature: temperaturesMock.getTemperatures().entrySet()){
-            temperaturesMap.put(temperature.getKey(),temperature.getValue());
-            sum+=temperature.getValue();
-        }
-        double avr = sum/(double)temperaturesMap.size();
-        System.out.println(avr);
+
         when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
         //When
-        double avrResult = weatherForecast.averageTemp();
+        double avrTm = weatherForecast.averageTemp();
         //Then
-        Assertions.assertEquals(25.56,avrResult);
+        Assertions.assertEquals(25.56,avrTm);
 
     }
+    @Test
+    void testMedianaTempWithMock(){
+        //Given
+        Temperatures temperaturesMock = mock(Temperatures.class);
+        Map<String,Double> temperaturesMap = new HashMap<>();
+        temperaturesMap.put("Rzeszów",25.5);
+        temperaturesMap.put("Krakow", 26.2);
+        temperaturesMap.put("Wroclaw", 24.8);
+        temperaturesMap.put("Warszawa", 25.2);
+        temperaturesMap.put("Gdansk", 26.1);
 
-
-
+        when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
+        WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
+        //When
+        double medTm = weatherForecast.medianaTemp();
+        //Then
+        Assertions.assertEquals(25.5,medTm);
+    }
 }
-

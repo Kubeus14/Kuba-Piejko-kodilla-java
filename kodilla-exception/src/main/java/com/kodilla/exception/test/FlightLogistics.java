@@ -29,7 +29,7 @@ public class FlightLogistics {
         officeAirport.put("Pyrzowice", false);
         officeAirport.put("Okęcie", true);
         officeAirport.put("Modlin", true);
-        officeAirport.put("Ławica", false);
+        officeAirport.put("Lawica", false);
         officeAirport.put("Lublinek", true);
 
         return officeAirport;

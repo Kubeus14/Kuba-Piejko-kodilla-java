@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 class WeatherForecastTestSuite{
     @Test
     void testCalculateForecastWithStub(){
-        //Given
         Temperatures temperatures = new TemperaturesStub();
         WeatherForecast weatherForecast = new WeatherForecast(temperatures);
         //When

@@ -15,6 +15,12 @@ public final class ForumUser{
         this.realName = realName;
         this.location = location;
     }
+    public void addFriend(ForumUser user){
+        friends.add(user);
+    }
+    public boolean removeFriend(ForumUser user){
+        return friends.remove(user);
+    }
 
     public String getUsername() {
         return username;
@@ -27,15 +33,9 @@ public final class ForumUser{
     public String getLocation() {
         return location;
     }
-    public Set<ForumUser> getFriends(){
-        return friends;
-    }
 
-    public void addFriend(ForumUser user){
-        friends.add(user);
-    }
-    public boolean removeFriends(ForumUser user){
-        return friends.remove(user);
+    public Set<ForumUser> getFriends() {
+        return friends;
     }
     public Set<String> getLocationsOfFriends(){
         return friends.stream()

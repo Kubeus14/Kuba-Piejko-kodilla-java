@@ -82,12 +82,12 @@ public class StreamMain {                                                     //
 
         //exercise 7.3
         Forum forum = new Forum();
-        Map<Integer,ForumUser> mapForumUser = forum.getForumUserList().stream()
+        Map<Integer, ForumUser> forumMap = forum.getForumUserList().stream()
                 .filter(forumUser -> forumUser.getSex()=='M')
-                .filter(forumUser -> Period.between(forumUser.getBirthdayDate(),LocalDate.now()).getYears()>=20)
-                .filter(forumUser -> forumUser.getPostsQuantity()>=1)
+                .filter(forumUser -> Period.between(forumUser.getBirthdayDate(), LocalDate.now()).getYears()>=20)
+                .filter(forumUser -> forumUser.getPostsQty()>-1)
                 .collect(Collectors.toMap(ForumUser::getIDNumber,ForumUser->ForumUser));
-        mapForumUser.entrySet().stream()
+        forumMap.entrySet().stream()
                 .map(entry->entry.getKey()+": "+entry.getValue())
                 .forEach(System.out::println);
 
@@ -102,11 +102,11 @@ public class StreamMain {                                                     //
 
         //M 7.3 Book
         BookDirectory bookDirectory = new BookDirectory();
-        String resultBook = bookDirectory.getList().stream()
-                .filter(book -> book.getYearOfPublication()>2005)
+        String resultString = bookDirectory.getList().stream()
+                .filter(book->book.getYearOfPublication()>2005)
                 .map(Book::toString)
                 .collect(Collectors.joining(",\n","<<",">>"));
-        System.out.println(resultBook);
+        System.out.println(resultString);
     }
 }
 

@@ -4,17 +4,17 @@ import java.time.LocalDate;
 
 public class ForumUser{
     private final int IDNumber;
-    private final String name;
-    private final char sex;
-    private final LocalDate birthdayDate;
-    private final int postsQuantity;
+    private String name;
+    private char sex;
+    private LocalDate birthdayDate;
+    private int postsQty;
 
-    public ForumUser(int IDNumber, String name, char sex, LocalDate birthdayDate, int postsQuantity) {
+    public ForumUser(int IDNumber, String name, char sex, LocalDate birthdayDate, int postsQty) {
         this.IDNumber = IDNumber;
         this.name = name;
         this.sex = sex;
         this.birthdayDate = birthdayDate;
-        this.postsQuantity = postsQuantity;
+        this.postsQty = postsQty;
     }
 
     public int getIDNumber() {
@@ -33,8 +33,8 @@ public class ForumUser{
         return birthdayDate;
     }
 
-    public int getPostsQuantity() {
-        return postsQuantity;
+    public int getPostsQty() {
+        return postsQty;
     }
     @Override
     public String toString() {
@@ -43,7 +43,7 @@ public class ForumUser{
                 ", name='" + name + '\'' +
                 ", sex=" + sex +
                 ", birthdayDate=" + birthdayDate +
-                ", postsQty=" + postsQuantity +
+                ", postsQty=" + postsQty +
                 '}';
     }
 }
