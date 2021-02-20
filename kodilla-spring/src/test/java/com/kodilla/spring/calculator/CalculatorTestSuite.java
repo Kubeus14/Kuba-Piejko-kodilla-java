@@ -1,10 +1,11 @@
 package com.kodilla.spring.calculator;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class CalculatorTestSuite {
@@ -22,9 +23,9 @@ public class CalculatorTestSuite {
         double divValue = calculator.div(14, 7);
 
         //Then
-        Assertions.assertEquals(10, addValue);
-        Assertions.assertEquals(12, subValue);
-        Assertions.assertEquals(8, mulValue);
-        Assertions.assertEquals(2, divValue);
+        assertEquals(10, addValue);
+        assertEquals(12, subValue);
+        assertEquals(8, mulValue);
+        assertEquals(2, divValue);
     }
 }
