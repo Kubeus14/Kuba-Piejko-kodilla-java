@@ -9,8 +9,7 @@ public class FlightsDb {
         this.availableFlights = availableFlights;
     }
 
-    public FlightsDb() {
-    }
+
 
     public Set<Flight> getAvailableFlights() {
         return availableFlights;

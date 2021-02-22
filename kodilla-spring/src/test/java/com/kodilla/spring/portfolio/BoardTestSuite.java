@@ -14,18 +14,19 @@ public class BoardTestSuite {
     public void testTaskAdd(){
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
-        BoardConfig boardConfig = context.getBean(BoardConfig.class);
+        Board board = context.getBean(Board.class);
         //When
-        String task1 = "Task 1";
-        String task2 = "Task 2";
-        String task3 = "Task 3";
-        boardConfig.getToDoList().processOfTasks(task1);
-        boardConfig.getToDoList().processOfTasks(task2);
-        boardConfig.getToDoList().processOfTasks(task3);
+        board.getToDoList().addTask("Task 1");
+        board.getToDoList().addTask("Task 2");
+
+        board.getInProgressList().addTask("Task 3");
+        board.getDoneList().addTask("Task 4");
+        board.getDoneList().addTask("Task 5");
+        board.getDoneList().addTask("Task 6");
         //Then
-        assertEquals(true,boardConfig.getToDoList().processOfTasks(task1));
-        assertEquals(true,boardConfig.getInProgressList().processOfTasks(task2));
-        assertEquals(true,boardConfig.getDoneList().processOfTasks(task3));
+        assertEquals(2,board.getToDoList().getTasks().size());
+        assertEquals(1,board.getInProgressList().getTasks().size());
+        assertEquals(3,board.getDoneList().getTasks().size());
 
 
 

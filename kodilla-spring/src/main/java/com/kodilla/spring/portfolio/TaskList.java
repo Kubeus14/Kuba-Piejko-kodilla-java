@@ -13,7 +13,7 @@ public class TaskList {
     public List<String> getTasks() {
         return tasks;
     }
-    public boolean processOfTasks(String assignment){
+    public boolean addTask(String assignment){
         return tasks.add(assignment);
 
     }
