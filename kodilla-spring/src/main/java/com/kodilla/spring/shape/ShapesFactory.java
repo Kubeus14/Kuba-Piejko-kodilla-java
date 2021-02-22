@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Random;
 
 @Configuration
-public class ShapesFactory {
+public class ShapesFactory{
     @Bean
     public Square createSquare(){
         return new Square();
@@ -17,13 +17,13 @@ public class ShapesFactory {
         Random generator = new Random();
         int chosen = generator.nextInt(3);
         if(chosen==0){
-            theShape = new Triangle();
+            theShape=new Circle();
         }
         else if(chosen==1){
-            theShape = new Circle();
+            theShape=new Triangle();
         }
         else{
-            theShape = new Square();
+            theShape=new Square();
         }
         return theShape;
     }

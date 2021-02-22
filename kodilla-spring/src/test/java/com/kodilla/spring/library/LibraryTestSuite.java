@@ -7,11 +7,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 @SpringBootTest
-class LibraryTestSuite {
+class LibraryTestSuite{
     @Autowired
     private Library library;
     @Test
-    void testLoadFromDb() {
+    void testLoadFromDb(){
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
         Library library = context.getBean(Library.class);
@@ -20,9 +20,8 @@ class LibraryTestSuite {
         //Then
         //do nothing
     }
-
     @Test
-    void testSaveToDb() {
+    void testSaveToDb(){
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
         Library library = context.getBean(Library.class);
