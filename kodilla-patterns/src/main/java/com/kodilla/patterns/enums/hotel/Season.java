@@ -21,4 +21,5 @@ public enum Season {
     public BigDecimal getDoubleRoomPrice() {
         return doubleRoomPrice;
     }
+
 }
