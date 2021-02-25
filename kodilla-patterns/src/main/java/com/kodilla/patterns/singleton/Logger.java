@@ -1,26 +1,19 @@
 package com.kodilla.patterns.singleton;
 
-public class Logger {
+public enum Logger {
 
+    INSTANCE;
     private String lastLog = "";
 
     public String getLastLog() {
-        return lastLog;
+        return this.lastLog;
     }
 
     public void log(String log) {
-        lastLog = log;
+        this.lastLog = log;
         System.out.println("Log: [" + log + "]");
     }
 
-    private static Logger instance;
 
-    public static Logger instanceReturn() {
-        if (instance == null) {
-            instance = new Logger();
-
-        }
-        return instance;
-}
 
 }

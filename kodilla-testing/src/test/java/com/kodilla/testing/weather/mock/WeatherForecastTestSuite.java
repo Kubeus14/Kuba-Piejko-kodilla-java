@@ -3,7 +3,6 @@ package com.kodilla.testing.weather.mock;
 import com.kodilla.testing.weather.stub.Temperatures;
 import com.kodilla.testing.weather.stub.WeatherForecast;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -11,6 +10,7 @@ import org.mockito.Mock;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -39,9 +39,9 @@ class WeatherForecastTestSuite{
         when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
         //When
-        int quantityOfSensors = weatherForecast.calculateForecast().size();
+        int quantityOfSensors= weatherForecast.calculateForecast().size();
         //Then
-        Assertions.assertEquals(5,quantityOfSensors);
+        assertEquals(5,quantityOfSensors);
     }
     @Test
     void testAverageTempWithMock(){
@@ -59,7 +59,8 @@ class WeatherForecastTestSuite{
         //When
         double avrTm = weatherForecast.averageTemp();
         //Then
-        Assertions.assertEquals(25.56,avrTm);
+        assertEquals(25.56,avrTm);
+
 
     }
     @Test
@@ -76,8 +77,8 @@ class WeatherForecastTestSuite{
         when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
         //When
-        double medTm = weatherForecast.medianaTemp();
+        double mdTemp = weatherForecast.medianaTemp();
         //Then
-        Assertions.assertEquals(25.5,medTm);
+        assertEquals(25.5,mdTemp);
     }
 }

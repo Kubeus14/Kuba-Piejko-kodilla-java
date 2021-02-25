@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ShapeCollectorTestSuite{
     @BeforeEach
@@ -40,6 +41,7 @@ public class ShapeCollectorTestSuite{
         //When
         boolean result = shapeCollector.removeFigure(shape);
         //Then
+        assertTrue(result);
         assertEquals(0,shapeCollector.getShapeCollection().size());
     }
     @DisplayName("When we create shapeResult, then we check that is equal with shape")
@@ -47,7 +49,7 @@ public class ShapeCollectorTestSuite{
     public void testGetFigure(){
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Shape shape = new Square(2);
+        Shape shape = new Square(4);
         shapeCollector.addFigure(shape);
         //When
         Shape shapeResult = shapeCollector.getFigure(0);
@@ -66,6 +68,6 @@ public class ShapeCollectorTestSuite{
         //When
         List<Shape> shapeResultList = shapeCollector.getShapeCollection();
         //Then
-        assertEquals(shapeList.toString(),shapeResultList.toString());
+        assertEquals(shapeList,shapeResultList);
     }
 }

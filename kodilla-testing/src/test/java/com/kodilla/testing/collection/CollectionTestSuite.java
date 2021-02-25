@@ -1,10 +1,15 @@
 package com.kodilla.testing.collection;
 
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CollectionTestSuite{
     private static OddNumbersExterminator oddNumbersExterminator;
@@ -14,26 +19,24 @@ public class CollectionTestSuite{
     }
     @AfterEach
     public void after(){
-        System.out.println("Test case: end");
+        System.out.println("Test case: after");
     }
     @BeforeAll
-    public static void beforeClass(){
-        oddNumbersExterminator= new OddNumbersExterminator();
+    public static void beforeAll(){
+        oddNumbersExterminator = new OddNumbersExterminator();
     }
-    @DisplayName("when create emptyList and resultList, we check if they are equal")
     @Test
-    public void testOddNumbersExterminatorEmptyList(){
+    void testOddNumbersExterminatorEmptyList(){
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         List<Integer> emptyList = new ArrayList<>();
         //When
         List<Integer> resultList = oddNumbersExterminator.exterminate(emptyList);
         //Then
-        Assertions.assertEquals(emptyList,resultList);
+        assertEquals(emptyList,resultList);
     }
-    @DisplayName("when we create resultList, then we check if it equals secondList")
     @Test
-    public void testOddNumbersExterminatorNormalList () {
+    void testOddNumbersExterminatorNormalList(){
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         List<Integer> normalList = new ArrayList<>();
@@ -52,6 +55,7 @@ public class CollectionTestSuite{
         //When
         List<Integer> resultList = oddNumbersExterminator.exterminate(normalList);
         //Then
-        Assertions.assertEquals(secondList,resultList);
+        assertEquals(secondList,resultList);
     }
+
 }

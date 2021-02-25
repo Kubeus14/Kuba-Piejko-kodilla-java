@@ -28,16 +28,16 @@ public class StreamMain {                                                     //
 
         // [4]
         ExpressionExecutor expressionExecutor = new ExpressionExecutor();
-        expressionExecutor.executeExpression(3,4,(a,b)->a+b);
-        expressionExecutor.executeExpression(8,4,(a,b)->a-b);
-        expressionExecutor.executeExpression(8,4,(a,b)->a/b);
-        expressionExecutor.executeExpression(7,3,(a,b)->a*b);
+        expressionExecutor.executeExpression(2,2,(a,b)->a*b);
+        expressionExecutor.executeExpression(2,2,(a,b)->a/b);
+        expressionExecutor.executeExpression(2,2,(a,b)->a+b);
+        expressionExecutor.executeExpression(2,2,(a,b)->a-b);
 
         //
+        expressionExecutor.executeExpression(4,4, FunctionalCalculator::divideAByB);
+        expressionExecutor.executeExpression(4,4,FunctionalCalculator::multiplyAByB);
         expressionExecutor.executeExpression(4,4,FunctionalCalculator::subAFromB);
-        expressionExecutor.executeExpression(3,3,FunctionalCalculator::addAToB);
-        expressionExecutor.executeExpression(5,4,FunctionalCalculator::multiplyAByB);
-        expressionExecutor.executeExpression(8,4,FunctionalCalculator::divideAByB);
+        expressionExecutor.executeExpression(4,4,FunctionalCalculator::addAToB);
 
 
 
@@ -82,13 +82,13 @@ public class StreamMain {                                                     //
 
         //exercise 7.3
         Forum forum = new Forum();
-        Map<Integer, ForumUser> forumMap = forum.getForumUserList().stream()
+        Map<Integer, ForumUser> mapForumUser = forum.getForumUserList().stream()
                 .filter(forumUser -> forumUser.getSex()=='M')
                 .filter(forumUser -> Period.between(forumUser.getBirthdayDate(), LocalDate.now()).getYears()>=20)
-                .filter(forumUser -> forumUser.getPostsQty()>-1)
+                .filter(forumUser -> forumUser.getPostsQty()>=1)
                 .collect(Collectors.toMap(ForumUser::getIDNumber,ForumUser->ForumUser));
-        forumMap.entrySet().stream()
-                .map(entry->entry.getKey()+": "+entry.getValue())
+        mapForumUser.entrySet().stream()
+                .map(entry->entry.getKey()+" "+entry.getValue())
                 .forEach(System.out::println);
 
 
@@ -97,16 +97,17 @@ public class StreamMain {                                                     //
                 .map(String::toUpperCase)
                 .filter(s->s.length()>11)
                 .map(s->s.substring(0,s.indexOf(' ')+2)+" . ")
-                .filter(s->s.substring(0,1).equals("M"))
+                .filter(s->s.substring(0,1).equals('M'))
                 .forEach(System.out::println);
 
         //M 7.3 Book
         BookDirectory bookDirectory = new BookDirectory();
-        String resultString = bookDirectory.getList().stream()
-                .filter(book->book.getYearOfPublication()>2005)
+        String resultList = bookDirectory.getList().stream()
+                .filter(book -> book.getYearOfPublication()>2005)
                 .map(Book::toString)
                 .collect(Collectors.joining(",\n","<<",">>"));
-        System.out.println(resultString);
+        System.out.println(resultList);
+
     }
 }
 
