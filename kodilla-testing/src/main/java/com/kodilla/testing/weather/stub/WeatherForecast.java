@@ -9,7 +9,7 @@ public class WeatherForecast{
     }
     public Map<String,Double> calculateForecast(){
         Map<String,Double> resultMap = new HashMap<>();
-        for(Map.Entry<String,Double> temperature:temperatures.getTemperatures().entrySet()){
+        for(Map.Entry<String,Double> temperature : temperatures.getTemperatures().entrySet()){
             resultMap.put(temperature.getKey(),temperature.getValue()+1.0);
         }
         return resultMap;
@@ -17,14 +17,13 @@ public class WeatherForecast{
     public double averageTemp(){
         double sum = 0.0;
         Map<String,Double> resultMap = new HashMap<>();
-        for(Map.Entry<String,Double> temperature:temperatures.getTemperatures().entrySet()){
+        for(Map.Entry<String,Double> temperature : temperatures.getTemperatures().entrySet()){
             resultMap.put(temperature.getKey(),temperature.getValue());
             sum+=temperature.getValue();
         }
         double avg = sum/(double)resultMap.size();
         System.out.println(avg);
         return avg;
-
     }
     public double medianaTemp(){
         List<Double> temps = new ArrayList<>(temperatures.getTemperatures().values());

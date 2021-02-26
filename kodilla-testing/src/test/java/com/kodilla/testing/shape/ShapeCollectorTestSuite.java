@@ -68,6 +68,6 @@ public class ShapeCollectorTestSuite{
         //When
         List<Shape> shapeResultList = shapeCollector.getShapeCollection();
         //Then
-        assertEquals(shapeList,shapeResultList);
+        assertEquals(shapeList.toString(),shapeResultList.toString());
     }
 }

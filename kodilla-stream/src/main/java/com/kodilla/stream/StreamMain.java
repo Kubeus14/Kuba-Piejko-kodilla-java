@@ -97,17 +97,19 @@ public class StreamMain {                                                     //
                 .map(String::toUpperCase)
                 .filter(s->s.length()>11)
                 .map(s->s.substring(0,s.indexOf(' ')+2)+" . ")
-                .filter(s->s.substring(0,1).equals('M'))
+                .filter(s->s.substring(0,1).equals("M"))
                 .forEach(System.out::println);
+
 
         //M 7.3 Book
         BookDirectory bookDirectory = new BookDirectory();
-        String resultList = bookDirectory.getList().stream()
+        Map<String,Book> bookMap = bookDirectory.getList().stream()
                 .filter(book -> book.getYearOfPublication()>2005)
-                .map(Book::toString)
-                .collect(Collectors.joining(",\n","<<",">>"));
-        System.out.println(resultList);
-
+                .collect(Collectors.toMap(Book::getSignature,book->book));
+        System.out.println("#elements: "+bookMap.size());
+        bookMap.entrySet().stream()
+                .map(entry->entry.getKey()+" "+entry.getValue())
+                .forEach(System.out::println);
     }
 }
 

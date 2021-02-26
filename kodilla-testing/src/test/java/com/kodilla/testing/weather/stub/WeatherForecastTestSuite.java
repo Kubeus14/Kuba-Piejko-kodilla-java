@@ -32,8 +32,8 @@ class WeatherForecastTestSuite{
         Temperatures temperatures = new TemperaturesStub();
         WeatherForecast weatherForecast = new WeatherForecast(temperatures);
         //When
-        double medTemp = weatherForecast.medianaTemp();
+        double medianaTemp = weatherForecast.medianaTemp();
         //Then
-        assertEquals(25.5,medTemp);
+        assertEquals(25.5,medianaTemp);
     }
 }

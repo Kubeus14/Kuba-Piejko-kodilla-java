@@ -34,6 +34,7 @@ public class CollectionTestSuite{
         List<Integer> resultList = oddNumbersExterminator.exterminate(emptyList);
         //Then
         assertEquals(emptyList,resultList);
+
     }
     @Test
     void testOddNumbersExterminatorNormalList(){
