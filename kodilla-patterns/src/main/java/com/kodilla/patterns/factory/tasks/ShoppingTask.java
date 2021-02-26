@@ -15,6 +15,7 @@ public class ShoppingTask implements Tasks {
 
     public void executeTask(){
         System.out.println(whatToBuy);
+        System.out.println(quantity);
     }
     public String getTaskName(){
         return taskName;

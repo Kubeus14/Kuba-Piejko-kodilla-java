@@ -14,6 +14,7 @@ public class PaintingTask implements Tasks{
     }
     public void executeTask(){
         System.out.println(whatToPaint);
+        System.out.println(color);
     }
     public String getTaskName(){
         return taskName;

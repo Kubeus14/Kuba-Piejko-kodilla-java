@@ -14,6 +14,7 @@ public class DrivingTask implements Tasks {
     }
     public void executeTask(){
         System.out.println(where);
+        System.out.println(using);
     }
     public String getTaskName(){
         return taskName;
