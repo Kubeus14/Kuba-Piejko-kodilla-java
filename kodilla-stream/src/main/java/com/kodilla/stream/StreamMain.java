@@ -28,31 +28,29 @@ public class StreamMain {                                                     //
 
         // [4]
         ExpressionExecutor expressionExecutor = new ExpressionExecutor();
-        expressionExecutor.executeExpression(2,2,(a,b)->a*b);
-        expressionExecutor.executeExpression(2,2,(a,b)->a/b);
-        expressionExecutor.executeExpression(2,2,(a,b)->a+b);
-        expressionExecutor.executeExpression(2,2,(a,b)->a-b);
-
+        expressionExecutor.executeExpression(4,4,(a,b)->a+b);
+        expressionExecutor.executeExpression(4,4,(a,b)->a-b);
+        expressionExecutor.executeExpression(4,4,(a,b)->a*b);
+        expressionExecutor.executeExpression(4,4,(a,b)->a/b);
         //
+        expressionExecutor.executeExpression(4,2, FunctionalCalculator::addAToB);
+        expressionExecutor.executeExpression(4,3, FunctionalCalculator::subAFromB);
+        expressionExecutor.executeExpression(4,1, FunctionalCalculator::multiplyAByB);
         expressionExecutor.executeExpression(4,4, FunctionalCalculator::divideAByB);
-        expressionExecutor.executeExpression(4,4,FunctionalCalculator::multiplyAByB);
-        expressionExecutor.executeExpression(4,4,FunctionalCalculator::subAFromB);
-        expressionExecutor.executeExpression(4,4,FunctionalCalculator::addAToB);
-
 
 
         //exercise 7.1
         PoemBeautifier poemBeautifier = new PoemBeautifier();
-        String beautifulText = poemBeautifier.beautify("Text to beautify", (text -> text.toUpperCase()));
+        String beautifulText = poemBeautifier.beautify("Text to beautify",text -> text.toUpperCase());
         System.out.println(beautifulText);
 
-        String beautifulText2 = poemBeautifier.beautify("Text to beautify", (text -> "ABC" + text + "ABC"));
+        String beautifulText2 = poemBeautifier.beautify("Text to beautify",text -> "ABC"+text+"ABC");
         System.out.println(beautifulText2);
 
-        String beautifulText3 = poemBeautifier.beautify("Text to beautify", (text -> text.replace(" ", "*")));
+        String beautifulText3 = poemBeautifier.beautify("Text to beautify",text->text.replace(" ","*"));
         System.out.println(beautifulText3);
 
-        String beautifulText4 = poemBeautifier.beautify("Text to beautify", (text -> text.length() + " letters ***" + text + "*** " + text.length() + " letters"));
+        String beautifulText4 = poemBeautifier.beautify("Text to beautify",text -> text.length()+ " letters ***" + text + "*** " + text.length() + " letters");
         System.out.println(beautifulText4);
 
         String beautifulText5 = poemBeautifier.beautify("Text to beautify", (text -> text.concat(String.valueOf(text.hashCode()))));
@@ -77,17 +75,17 @@ public class StreamMain {                                                     //
 
         //exercise 7.2
         System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
+        NumbersGenerator.generateEven(10);
 
 
         //exercise 7.3
         Forum forum = new Forum();
-        Map<Integer, ForumUser> mapForumUser = forum.getForumUserList().stream()
+        Map<Integer, ForumUser> forumUserMap = forum.getForumUserList().stream()
                 .filter(forumUser -> forumUser.getSex()=='M')
                 .filter(forumUser -> Period.between(forumUser.getBirthdayDate(), LocalDate.now()).getYears()>=20)
                 .filter(forumUser -> forumUser.getPostsQty()>=1)
                 .collect(Collectors.toMap(ForumUser::getIDNumber,ForumUser->ForumUser));
-        mapForumUser.entrySet().stream()
+        forumUserMap.entrySet().stream()
                 .map(entry->entry.getKey()+" "+entry.getValue())
                 .forEach(System.out::println);
 
@@ -101,15 +99,15 @@ public class StreamMain {                                                     //
                 .forEach(System.out::println);
 
 
+
         //M 7.3 Book
         BookDirectory bookDirectory = new BookDirectory();
-        Map<String,Book> bookMap = bookDirectory.getList().stream()
+        String bookString = bookDirectory.getList().stream()
                 .filter(book -> book.getYearOfPublication()>2005)
-                .collect(Collectors.toMap(Book::getSignature,book->book));
-        System.out.println("#elements: "+bookMap.size());
-        bookMap.entrySet().stream()
-                .map(entry->entry.getKey()+" "+entry.getValue())
-                .forEach(System.out::println);
+                .map(Book::toString)
+                .collect(Collectors.joining(",\n","<<",">>"));
+        System.out.println(bookString);
+
     }
 }
 

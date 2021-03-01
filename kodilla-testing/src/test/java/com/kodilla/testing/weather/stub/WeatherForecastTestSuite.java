@@ -2,7 +2,7 @@ package com.kodilla.testing.weather.stub;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.testng.AssertJUnit.assertEquals;
 
 class WeatherForecastTestSuite{
     @Test
@@ -32,8 +32,8 @@ class WeatherForecastTestSuite{
         Temperatures temperatures = new TemperaturesStub();
         WeatherForecast weatherForecast = new WeatherForecast(temperatures);
         //When
-        double medianaTemp = weatherForecast.medianaTemp();
+        double medTemp = weatherForecast.medianaTemp();
         //Then
-        assertEquals(25.5,medianaTemp);
+        assertEquals(25.5,medTemp);
     }
 }

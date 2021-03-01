@@ -15,6 +15,7 @@ public class World {
                 .distinct()
                 .map(Country::getPeopleQuantity)
                 .reduce(BigDecimal.ZERO,(sum,country)->sum=sum.add(country));
+
         return peopleQuantityOnTheWorld;
     }
 }

@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public final class  ForumUser{
+public final class ForumUser{
     private final String username;
     private final String realName;
     private final String location;
@@ -14,12 +14,6 @@ public final class  ForumUser{
         this.username = username;
         this.realName = realName;
         this.location = location;
-    }
-    public void addFriend(ForumUser user){
-        friends.add(user);
-    }
-    public boolean removeFriend(ForumUser user){
-        return friends.remove(user);
     }
 
     public String getUsername() {
@@ -36,6 +30,12 @@ public final class  ForumUser{
 
     public Set<ForumUser> getFriends() {
         return friends;
+    }
+    public void addFriend(ForumUser user){
+        friends.add(user);
+    }
+    public boolean removeFriend(ForumUser user){
+        return friends.remove(user);
     }
     public Set<String> getLocationsOfFriends(){
         return friends.stream()

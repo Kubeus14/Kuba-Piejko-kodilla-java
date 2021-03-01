@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class People{
-    public static List<String> getList() {
-    final List<String> theList = new ArrayList<>();
+    public static List<String> getList(){
+        List<String> theList = new ArrayList<>();
         theList.add("John Smith");                         // [7]
         theList.add("Dorothy Newman");                     // [8]
         theList.add("John Wolkowitz");                     // [9]

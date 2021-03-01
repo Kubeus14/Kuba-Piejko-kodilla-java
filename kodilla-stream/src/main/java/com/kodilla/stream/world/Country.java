@@ -5,9 +5,10 @@ import java.math.BigDecimal;
 public class Country{
     private final String countryName;
     private final BigDecimal peopleQuantity;
-    public Country(final String countryName, final BigDecimal peopleQuantity){
-        this.countryName=countryName;
-        this.peopleQuantity=peopleQuantity;
+
+    public Country(final String countryName,final BigDecimal peopleQuantity) {
+        this.countryName = countryName;
+        this.peopleQuantity = peopleQuantity;
     }
     public Country(final String countryName){
         this(countryName, new BigDecimal("1000001"));
@@ -26,7 +27,8 @@ public class Country{
     public int hashCode() {
         return countryName.hashCode();
     }
-    public BigDecimal getPeopleQuantity(){
+
+    public BigDecimal getPeopleQuantity() {
         return peopleQuantity;
     }
 }

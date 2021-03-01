@@ -27,7 +27,6 @@ class WeatherForecastTestSuite{
     }
     @Test
     void testCalculateForecastWithMock(){
-        //Given
         Temperatures temperaturesMock = mock(Temperatures.class);
         Map<String,Double> temperaturesMap = new HashMap<>();
         temperaturesMap.put("Rzeszów",25.5);

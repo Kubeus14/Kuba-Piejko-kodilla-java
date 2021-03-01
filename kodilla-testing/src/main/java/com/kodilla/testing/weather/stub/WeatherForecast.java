@@ -4,9 +4,11 @@ import java.util.*;
 
 public class WeatherForecast{
     private Temperatures temperatures;
-    public WeatherForecast(Temperatures temperatures){
-        this.temperatures=temperatures;
+
+    public WeatherForecast(Temperatures temperatures) {
+        this.temperatures = temperatures;
     }
+
     public Map<String,Double> calculateForecast(){
         Map<String,Double> resultMap = new HashMap<>();
         for(Map.Entry<String,Double> temperature : temperatures.getTemperatures().entrySet()){
@@ -21,8 +23,7 @@ public class WeatherForecast{
             resultMap.put(temperature.getKey(),temperature.getValue());
             sum+=temperature.getValue();
         }
-        double avg = sum/(double)resultMap.size();
-        System.out.println(avg);
+        double avg = sum/resultMap.size();
         return avg;
     }
     public double medianaTemp(){

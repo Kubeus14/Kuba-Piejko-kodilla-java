@@ -14,8 +14,8 @@ public class SandStorageTestSuite{
         //Given
         List<SandStorage> continents = new ArrayList<>();
         continents.add(new Europe());
-        continents.add(new Asia());
         continents.add(new Africa());
+        continents.add(new Asia());
         //When
         BigDecimal totalSand = BigDecimal.ZERO;
         for(SandStorage continent : continents){

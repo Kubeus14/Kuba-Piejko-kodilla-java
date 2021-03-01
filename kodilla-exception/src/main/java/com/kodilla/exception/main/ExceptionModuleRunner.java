@@ -1,12 +1,12 @@
 package com.kodilla.exception.main;
 
-import com.kodilla.exception.io.FileReaderWithoutHandling;
+import com.kodilla.exception.io.FileReader;
 
 import java.io.IOException;
 
 public class ExceptionModuleRunner{
     public static void main(String[] args) throws IOException {
-        FileReaderWithoutHandling fileReader = new FileReaderWithoutHandling();
+        FileReader fileReader = new FileReader();
         fileReader.readFile();
     }
 }
