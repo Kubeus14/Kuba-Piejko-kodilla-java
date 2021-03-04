@@ -1,8 +1,10 @@
 package com.kodilla.patterns.factory;
 
-import com.kodilla.patterns.factory.tasks.Task;
-import com.kodilla.patterns.factory.tasks.TaskFactory;
+import com.kodilla.patterns.factory.tasks.*;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TaskFactoryTestSuite {
     @Test
@@ -30,12 +32,15 @@ public class TaskFactoryTestSuite {
 
     }
     @Test
-    void testDrivingTask(){
+    void testProcessTask(){
         //Given
         TaskFactory taskFactory = new TaskFactory();
-        //When
-        Task drTask = taskFactory.processTask(TaskFactory.DrivingAsg);
-        //Then
+        //When and them
+        assertAll(
+                ()->assertTrue(taskFactory.processTask(TaskFactory.ShoppingAsg) instanceof ShoppingTask),
+                ()->assertTrue(taskFactory.processTask(TaskFactory.PaintingAsg) instanceof PaintingTask),
+                ()->assertTrue(taskFactory.processTask(TaskFactory.DrivingAsg) instanceof DrivingTask)
+        );
 
     }
 
