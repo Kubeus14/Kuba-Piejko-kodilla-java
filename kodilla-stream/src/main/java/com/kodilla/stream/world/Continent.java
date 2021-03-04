@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Continent{
-   private final List<Country> listOfCountriesOnContinent = new ArrayList<>();
+   private final List<Country> listCountriesOnContinent = new ArrayList<>();
    private final String continentName;
 
     public Continent(String continentName) {
         this.continentName = continentName;
     }
 
-    public List<Country> getListOfCountriesOnContinent() {
-        return new ArrayList<>(listOfCountriesOnContinent);
+    public List<Country> getListCountriesOnContinent() {
+        return new ArrayList<>(listCountriesOnContinent);
     }
 
     public String getContinentName() {
         return continentName;
     }
     public boolean addCountry(Country country){
-        return listOfCountriesOnContinent.add(country);
+        return listCountriesOnContinent.add(country);
     }
 }

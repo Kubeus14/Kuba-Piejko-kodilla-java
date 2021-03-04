@@ -25,7 +25,7 @@ public class WorldTestSuite {
         //When
         BigDecimal totalPeople = world.getPeopleQuantity();
         //Then
-        BigDecimal expectedPeople = new BigDecimal("300003");
+        BigDecimal expectedPeople = new BigDecimal("3000003");
         assertEquals(expectedPeople,totalPeople);
     }
 }

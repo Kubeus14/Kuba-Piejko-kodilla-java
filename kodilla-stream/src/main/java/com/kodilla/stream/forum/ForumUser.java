@@ -6,13 +6,13 @@ import java.util.stream.Collectors;
 
 public final class ForumUser{
     private final String username;
-    private final String realName;
+    private final String realname;
     private final String location;
     private final Set<ForumUser> friends = new HashSet<>();
 
-    public ForumUser(String username, String realName, String location) {
+    public ForumUser(String username, String realname, String location) {
         this.username = username;
-        this.realName = realName;
+        this.realname = realname;
         this.location = location;
     }
 
@@ -20,8 +20,8 @@ public final class ForumUser{
         return username;
     }
 
-    public String getRealName() {
-        return realName;
+    public String getRealname() {
+        return realname;
     }
 
     public String getLocation() {
@@ -34,7 +34,7 @@ public final class ForumUser{
     public void addFriend(ForumUser user){
         friends.add(user);
     }
-    public boolean removeFriend(ForumUser user){
+    public boolean removeFriends(ForumUser user){
         return friends.remove(user);
     }
     public Set<String> getLocationsOfFriends(){
@@ -48,12 +48,13 @@ public final class ForumUser{
                 .filter(user->user!=this)
                 .map(ForumUser::getLocation)
                 .collect(Collectors.toSet());
+
     }
     @Override
     public String toString() {
         return "ForumUser{" +
                 "username='" + username + '\'' +
-                ", realName='" + realName + '\'' +
+                ", realName='" + realname + '\'' +
                 ", location='" + location + '\'' +
                 '}';
     }

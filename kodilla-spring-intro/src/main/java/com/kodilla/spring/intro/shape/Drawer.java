@@ -2,12 +2,16 @@ package com.kodilla.spring.intro.shape;
 
 public class Drawer{
 
-    Shape shape;
-    public Drawer(Shape shape){
+    final Shape shape;
+
+    public Drawer(final Shape shape){
         this.shape=shape;
     }
     public String doDrawing(){
         return shape.draw();
     }
+
+
+
 
 }

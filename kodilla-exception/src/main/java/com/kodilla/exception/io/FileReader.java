@@ -9,17 +9,29 @@ import java.util.stream.Stream;
 
 public class FileReader {
 
-    public void readFile(){
+    public void readFile() throws FileReaderException{
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("names.txt").getFile());
-        Path path = Paths.get(file.getPath());
-        try{
-            Stream<String> fileLines = Files.lines(path);
+        try(Stream<String> fileLines = Files.lines(Paths.get(file.getPath()))){
             fileLines.forEach(System.out::println);
         }
         catch(IOException e){
-            System.out.println("Wrong"+e);
+            throw new FileReaderException();
         }
-        System.out.println(file.getPath());
+        finally {
+            System.out.println("Always here");
+        }
+    }
+    public void readFile(final String fileName) throws FileReaderException{
+        ClassLoader classLoader = getClass().getClassLoader();
+        try(Stream<String> fileLines = Files.lines(Path.of(classLoader.getResource(fileName).toURI()))){
+
+        }
+        catch(Exception e){
+            throw  new FileReaderException();
+        }
+        finally {
+            System.out.println("ALways be here");
+        }
     }
 }

@@ -6,7 +6,7 @@ import com.kodilla.stream.book.BookDirectory;
 import com.kodilla.stream.forumuser.Forum;
 import com.kodilla.stream.forumuser.ForumUser;
 import com.kodilla.stream.iterate.NumbersGenerator;
-import com.kodilla.stream.lambda.ExecuteSaySomething;
+import com.kodilla.stream.lambda.Executor;
 import com.kodilla.stream.lambda.ExpressionExecutor;
 import com.kodilla.stream.lambda.Processor;
 import com.kodilla.stream.person.People;
@@ -22,8 +22,8 @@ public class StreamMain {                                                     //
     public static void main(String[] args) {
 
         Processor processor = new Processor();
-        ExecuteSaySomething executeSaySomething = new ExecuteSaySomething();
-        processor.execute(executeSaySomething);
+        Executor codeToExecute = () -> System.out.println("This is an example text");
+        processor.execute(codeToExecute);
 
 
         // [4]
@@ -80,12 +80,12 @@ public class StreamMain {                                                     //
 
         //exercise 7.3
         Forum forum = new Forum();
-        Map<Integer, ForumUser> forumUserMap = forum.getForumUserList().stream()
+        Map<Integer,ForumUser> mapOfForumUser = forum.getForumUserList().stream()
                 .filter(forumUser -> forumUser.getSex()=='M')
-                .filter(forumUser -> Period.between(forumUser.getBirthdayDate(), LocalDate.now()).getYears()>=20)
+                .filter(forumUser -> Period.between(forumUser.getBirthdayDate(),LocalDate.now()).getYears()>=20)
                 .filter(forumUser -> forumUser.getPostsQty()>=1)
                 .collect(Collectors.toMap(ForumUser::getIDNumber,ForumUser->ForumUser));
-        forumUserMap.entrySet().stream()
+        mapOfForumUser.entrySet().stream()
                 .map(entry->entry.getKey()+" "+entry.getValue())
                 .forEach(System.out::println);
 
@@ -103,7 +103,7 @@ public class StreamMain {                                                     //
         //M 7.3 Book
         BookDirectory bookDirectory = new BookDirectory();
         String bookString = bookDirectory.getList().stream()
-                .filter(book -> book.getYearOfPublication()>2005)
+                .filter(book -> book.getYearOfPublication()>2007)
                 .map(Book::toString)
                 .collect(Collectors.joining(",\n","<<",">>"));
         System.out.println(bookString);

@@ -2,7 +2,7 @@ package com.kodilla.patterns.factory;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ShapeFactoryTestSuite {
     @Test
@@ -37,4 +37,18 @@ public class ShapeFactoryTestSuite {
         assertEquals(37.50, rectangle.getArea(), 0);
         assertEquals("The long rectangle", rectangle.getName());
     }
+    @Test
+    void testMakeShape(){
+        //Given
+        ShapeFactory factory = new ShapeFactory();
+        //When and then
+        assertAll(
+                ()-> assertTrue(factory.makeShape(ShapeFactory.SQUARE) instanceof Square),
+                ()-> assertTrue(factory.makeShape(ShapeFactory.CIRCLE) instanceof Circle),
+                ()-> assertTrue(factory.makeShape(ShapeFactory.RECTANGLE) instanceof Rectangle)
+        );
+
+
+    }
+
 }

@@ -59,7 +59,7 @@ public class  ForumUserTestSuite {
         ForumUser user8 = new ForumUser("thebigone", "Clay Small", "Orlando");
         ForumUser user9 = new ForumUser("user121212", "Marisa Frank", "Washington");
         ForumUser user10 = new ForumUser("lawyer", "Lexie John", "Miami");
-
+        //When
         user1.addFriend(user3);
         user1.addFriend(user7);
         user1.addFriend(user10);
@@ -80,9 +80,9 @@ public class  ForumUserTestSuite {
         //Then
         assertEquals(3,user1.getLocationsOfFriendsOfFriends().size());
         assertTrue(user1.getLocationsOfFriendsOfFriends().contains("Key West"));
-        assertTrue(user1.getLocationsOfFriends().contains("Washington"));
-        assertTrue(user1.getLocationsOfFriends().contains("Miami"));
-        assertFalse(user1.getLocationsOfFriends().contains("Orlando"));
+        assertTrue(user1.getLocationsOfFriendsOfFriends().contains("Washington"));
+        assertTrue(user1.getLocationsOfFriendsOfFriends().contains("Miami"));
+        assertFalse(user1.getLocationsOfFriendsOfFriends().contains("Orlando"));
     }
 }
 
