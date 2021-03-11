@@ -36,10 +36,22 @@ public class TaskListDaoTestSuite {
 
 
         assertEquals(LISTNAME, readTaskList.get(0).getListName());
+        assertEquals(DESCRIPTION, readTaskList.get(0).getDescription());
 
 
         //CleanUp
-        taskListDao.delete(taskList);
+        taskListDao.deleteAll();
 
     }
+    @Test
+    void testFindByListNameEmptylist(){
+        //Given
+        //When
+        List<TaskList> readTaskList = taskListDao.findByListName(LISTNAME);
+        //Then
+        assertEquals(0,readTaskList.size());
+
+
+    }
+
 }
