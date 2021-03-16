@@ -2,7 +2,7 @@ package com.kodilla.testing.weather.stub;
 
 import org.junit.jupiter.api.Test;
 
-import static org.testng.AssertJUnit.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class WeatherForecastTestSuite{
     @Test
@@ -24,6 +24,7 @@ class WeatherForecastTestSuite{
         double avrTemp = weatherForecast.averageTemp();
         //Then
         assertEquals(25.56,avrTemp);
+
 
     }
     @Test

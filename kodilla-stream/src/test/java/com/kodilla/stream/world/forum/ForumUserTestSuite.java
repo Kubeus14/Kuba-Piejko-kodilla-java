@@ -63,7 +63,6 @@ public class  ForumUserTestSuite {
         user1.addFriend(user3);
         user1.addFriend(user7);
         user1.addFriend(user10);
-
         user3.addFriend(user1);
         user3.addFriend(user7);
         user3.addFriend(user2);

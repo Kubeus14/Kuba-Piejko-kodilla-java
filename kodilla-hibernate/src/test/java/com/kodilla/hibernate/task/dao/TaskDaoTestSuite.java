@@ -19,6 +19,7 @@ class TaskDaoTestSuite {
     private static final String DESCRIPTION = "Test: Learn Hibernate";
     @Autowired
     private TaskDao taskDao;
+
     @Test
     void testTaskDaoSave() {
         //Given

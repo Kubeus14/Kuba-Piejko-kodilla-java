@@ -1,13 +1,12 @@
 package com.kodilla.testing.shape;
 
-class Square implements Shape{
+public class Square implements Shape{
     private final static String name = "Square";
     private double edgeLength;
 
     public Square(double edgeLength) {
         this.edgeLength = edgeLength;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

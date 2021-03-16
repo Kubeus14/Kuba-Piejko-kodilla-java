@@ -6,7 +6,7 @@ import java.util.List;
 public class OddNumbersExterminator{
     public List<Integer> exterminate(List<Integer> numbers){
         List<Integer> oddNumbersList = new ArrayList<>();
-        for(Integer number : numbers){
+        for(int number : numbers){
             if(number%2==0){
                 oddNumbersList.add(number);
             }

@@ -12,7 +12,7 @@ public class Continent{
     }
 
     public List<Country> getListCountriesOnContinent() {
-        return new ArrayList<>(listCountriesOnContinent);
+        return listCountriesOnContinent;
     }
 
     public String getContinentName() {

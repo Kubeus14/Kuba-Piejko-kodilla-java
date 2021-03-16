@@ -22,21 +22,22 @@ public class StreamMain {                                                     //
     public static void main(String[] args) {
 
         Processor processor = new Processor();
-        Executor codeToExecute = () -> System.out.println("This is an example text");
+        Executor codeToExecute = ()-> System.out.println("This is an example text");
         processor.execute(codeToExecute);
 
 
         // [4]
         ExpressionExecutor expressionExecutor = new ExpressionExecutor();
-        expressionExecutor.executeExpression(4,4,(a,b)->a+b);
-        expressionExecutor.executeExpression(4,4,(a,b)->a-b);
-        expressionExecutor.executeExpression(4,4,(a,b)->a*b);
-        expressionExecutor.executeExpression(4,4,(a,b)->a/b);
+        expressionExecutor.executeExpression(5,5,(a,b)->a*b);
+        expressionExecutor.executeExpression(5,5,(a,b)->a/b);
+        expressionExecutor.executeExpression(5,5,(a,b)->a+b);
+        expressionExecutor.executeExpression(5,5,(a,b)->a-b);
         //
-        expressionExecutor.executeExpression(4,2, FunctionalCalculator::addAToB);
-        expressionExecutor.executeExpression(4,3, FunctionalCalculator::subAFromB);
-        expressionExecutor.executeExpression(4,1, FunctionalCalculator::multiplyAByB);
-        expressionExecutor.executeExpression(4,4, FunctionalCalculator::divideAByB);
+        expressionExecutor.executeExpression(5,5, FunctionalCalculator::multiplyAByB);
+        expressionExecutor.executeExpression(5,5,FunctionalCalculator::divideAByB);
+        expressionExecutor.executeExpression(5,5,FunctionalCalculator::addAToB);
+        expressionExecutor.executeExpression(5,5,FunctionalCalculator::subAFromB);
+
 
 
         //exercise 7.1
@@ -80,12 +81,12 @@ public class StreamMain {                                                     //
 
         //exercise 7.3
         Forum forum = new Forum();
-        Map<Integer,ForumUser> mapOfForumUser = forum.getForumUserList().stream()
+        Map<Integer, ForumUser> forumUserMap = forum.getForumUserList().stream()
                 .filter(forumUser -> forumUser.getSex()=='M')
-                .filter(forumUser -> Period.between(forumUser.getBirthdayDate(),LocalDate.now()).getYears()>=20)
+                .filter(forumUser -> Period.between(forumUser.getBirthdayDate(), LocalDate.now()).getYears()>=20)
                 .filter(forumUser -> forumUser.getPostsQty()>=1)
                 .collect(Collectors.toMap(ForumUser::getIDNumber,ForumUser->ForumUser));
-        mapOfForumUser.entrySet().stream()
+        forumUserMap.entrySet().stream()
                 .map(entry->entry.getKey()+" "+entry.getValue())
                 .forEach(System.out::println);
 
@@ -95,7 +96,7 @@ public class StreamMain {                                                     //
                 .map(String::toUpperCase)
                 .filter(s->s.length()>11)
                 .map(s->s.substring(0,s.indexOf(' ')+2)+" . ")
-                .filter(s->s.substring(0,1).equals("M"))
+                .filter(s->s.substring(0,1).equals('M'))
                 .forEach(System.out::println);
 
 
@@ -103,10 +104,11 @@ public class StreamMain {                                                     //
         //M 7.3 Book
         BookDirectory bookDirectory = new BookDirectory();
         String bookString = bookDirectory.getList().stream()
-                .filter(book -> book.getYearOfPublication()>2007)
+                .filter(book->book.getYearOfPublication()>2005)
                 .map(Book::toString)
                 .collect(Collectors.joining(",\n","<<",">>"));
         System.out.println(bookString);
+
 
     }
 }

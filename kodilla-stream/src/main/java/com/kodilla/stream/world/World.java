@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class World {
-    private final List<Continent> listContinentsOnWorld = new ArrayList<>();
+    private final List<Continent> listContinentsInWorld = new ArrayList<>();
     public boolean addContinent(Continent continent){
-        return listContinentsOnWorld.add(continent);
+        return listContinentsInWorld.add(continent);
     }
     public BigDecimal getPeopleQuantity(){
-        BigDecimal peopleQuantityOnWorld = listContinentsOnWorld.stream()
+        BigDecimal peopleQuantityOnTheWorld = listContinentsInWorld.stream()
                 .flatMap(continent -> continent.getListCountriesOnContinent().stream())
                 .distinct()
                 .map(Country::getPeopleQuantity)
-                .reduce(BigDecimal.ZERO,(sum,country)->sum=sum.add(country));
+                .reduce(BigDecimal.ZERO,(sum,country)->sum.add(country));
+        return peopleQuantityOnTheWorld;
 
-        return peopleQuantityOnWorld;
     }
 }

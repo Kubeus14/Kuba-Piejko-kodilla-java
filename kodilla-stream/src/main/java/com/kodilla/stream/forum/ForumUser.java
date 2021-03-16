@@ -15,6 +15,24 @@ public final class ForumUser{
         this.realname = realname;
         this.location = location;
     }
+    public void addFriend(ForumUser user){
+        friends.add(user);
+    }
+    public boolean removeFriend(ForumUser user){
+        return friends.remove(user);
+    }
+    public Set<String> getLocationsOfFriends(){
+        return friends.stream()
+                .map(ForumUser::getLocation)
+                .collect(Collectors.toSet());
+    }
+    public Set<String> getLocationsOfFriendsOfFriends(){
+        return friends.stream()
+                .flatMap(user->user.getFriends().stream())
+                .filter(user->user!=this)
+                .map(ForumUser::getLocation)
+                .collect(Collectors.toSet());
+    }
 
     public String getUsername() {
         return username;
@@ -30,25 +48,6 @@ public final class ForumUser{
 
     public Set<ForumUser> getFriends() {
         return friends;
-    }
-    public void addFriend(ForumUser user){
-        friends.add(user);
-    }
-    public boolean removeFriends(ForumUser user){
-        return friends.remove(user);
-    }
-    public Set<String> getLocationsOfFriends(){
-        return friends.stream()
-                .map(ForumUser::getLocation)
-                .collect(Collectors.toSet());
-    }
-    public Set<String> getLocationsOfFriendsOfFriends(){
-        return friends.stream()
-                .flatMap(user->user.getFriends().stream())
-                .filter(user->user!=this)
-                .map(ForumUser::getLocation)
-                .collect(Collectors.toSet());
-
     }
     @Override
     public String toString() {

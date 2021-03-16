@@ -9,9 +9,9 @@ public final class FirstChallenge{
     }
     public static void main(String[] args){
         FirstChallenge firstChallenge = new FirstChallenge();
-        double result = 0;
+        double result = 0.0;
         try{
-            result = firstChallenge.divide(3,0);
+            result = firstChallenge.divide(3,1);
         }
         catch(ArithmeticException e){
             System.out.println("Wrong"+e);
