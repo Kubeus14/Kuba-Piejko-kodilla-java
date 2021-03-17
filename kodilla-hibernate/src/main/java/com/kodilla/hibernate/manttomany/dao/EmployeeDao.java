@@ -1,6 +1,5 @@
 package com.kodilla.hibernate.manttomany.dao;
 
-import com.kodilla.hibernate.manttomany.Company;
 import com.kodilla.hibernate.manttomany.Employee;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -12,8 +11,7 @@ import java.util.List;
 
 @Transactional
 @Repository
-public interface CompanyDao extends CrudRepository<Company, Integer> {
-
-    @Query(nativeQuery = true)
-    List<Company> retrieveCompanyNameLike(@Param("NAME") String name);
+public interface EmployeeDao extends CrudRepository<Employee, Integer> {
+    @Query
+    List<Employee> retrieveEmployeeWithLastname(@Param("LASTNAME") String lastname);
 }
