@@ -18,46 +18,40 @@ class CompanyDaoTestSuite {
     @Test
     void testSaveManyToMany() {
         //Given
-        Employee johnSmith = new Employee("John", "Smith");
-        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
-        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+        Employee worker1 = new Employee("Tom", "Collins");
+        Employee worker2 = new Employee("Kate", "Thomas");
+        Employee worker3 = new Employee("John","Watt");
+        Employee worker4 = new Employee("Mary","Connor");
 
-        Company softwareMachine = new Company("Software Machine");
-        Company dataMaesters = new Company("Data Maesters");
-        Company greyMatter = new Company("Grey Matter");
 
-        softwareMachine.getEmployees().add(johnSmith);
-        dataMaesters.getEmployees().add(stephanieClarckson);
-        dataMaesters.getEmployees().add(lindaKovalsky);
-        greyMatter.getEmployees().add(johnSmith);
-        greyMatter.getEmployees().add(lindaKovalsky);
+        Company company1 = new Company("Market");
+        Company company2 = new Company("Restaurant");
 
-        johnSmith.getCompanies().add(softwareMachine);
-        johnSmith.getCompanies().add(greyMatter);
-        stephanieClarckson.getCompanies().add(dataMaesters);
-        lindaKovalsky.getCompanies().add(dataMaesters);
-        lindaKovalsky.getCompanies().add(greyMatter);
+
+        company1.getEmployees().add(worker1);
+        company1.getEmployees().add(worker2);
+        company2.getEmployees().add(worker1);
+        company2.getEmployees().add(worker3);
+        company2.getEmployees().add(worker4);
+
+        worker1.getCompanies().add(company1);
+        worker1.getCompanies().add(company2);
+        worker2.getCompanies().add(company2);
+        worker3.getCompanies().add(company2);
+        worker4.getCompanies().add(company2);
 
         //When
-        companyDao.save(softwareMachine);
-        int softwareMachineId = softwareMachine.getId();
-        companyDao.save(dataMaesters);
-        int dataMaestersId = dataMaesters.getId();
-        companyDao.save(greyMatter);
-        int greyMatterId = greyMatter.getId();
+        companyDao.save(company1);
+        int company1Id = company1.getId();
+        companyDao.save(company2);
+        int company2Id = company2.getId();
+
 
         //Then
-        assertNotEquals(0, softwareMachineId);
-        assertNotEquals(0, dataMaestersId);
-        assertNotEquals(0, greyMatterId);
+        assertNotEquals(0, company1Id);
+        assertNotEquals(0, company2Id);
 
-        //CleanUp
-        //try {
-        //    companyDao.deleteById(softwareMachineId);
-        //    companyDao.deleteById(dataMaestersId);
-        //    companyDao.deleteById(greyMatterId);
-        //} catch (Exception e) {
-        //    //do nothing
-        //}
+
+
     }
 }
