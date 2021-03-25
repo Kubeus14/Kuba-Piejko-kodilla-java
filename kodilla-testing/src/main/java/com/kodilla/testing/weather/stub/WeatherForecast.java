@@ -4,8 +4,9 @@ import java.util.*;
 
 public class WeatherForecast{
     private Temperatures temperatures;
-    public WeatherForecast(Temperatures temperatures){
-        this.temperatures=temperatures;
+
+    public WeatherForecast(Temperatures temperatures) {
+        this.temperatures = temperatures;
     }
     public Map<String,Double> calculateForecast(){
         Map<String,Double> resultMap = new HashMap<>();

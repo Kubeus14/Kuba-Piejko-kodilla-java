@@ -6,26 +6,28 @@ import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class WorldTestSuite {
+public class WorldTestSuite{
     @Test
-    public void testGetPeopleQuantity() {
-    //Given
+    void testGetPeopleQuantity(){
+        //Given
         World world = new World();
+
         Continent europa = new Continent("Europa");
+
         Country italy = new Country("Italy");
-        Country hungary = new Country("Hungary");
-        Country france = new Country("France");
+        Country germany = new Country("Germany");
+        Country spain = new Country("Spain");
 
         world.addContinent(europa);
 
         europa.addCountry(italy);
-        europa.addCountry(hungary);
-        europa.addCountry(france);
+        europa.addCountry(germany);
+        europa.addCountry(spain);
 
         //When
         BigDecimal totalPeople = world.getPeopleQuantity();
         //Then
-        BigDecimal expectedPeople = new BigDecimal("3000003");
-        assertEquals(expectedPeople,totalPeople);
+        BigDecimal totalExpectedPeople = new BigDecimal("3000003");
+        assertEquals(totalExpectedPeople,totalPeople);
     }
 }

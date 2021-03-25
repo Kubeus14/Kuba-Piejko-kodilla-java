@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BookTestSuite {
+class BookTestSuite{
     @Test
     void testGetListUsingFor() {
         //Given
@@ -15,17 +15,26 @@ public class BookTestSuite {
         //When
         List<Book> books = bookDirectory.getList();
         //Then
-        int numberBookAfter2007 = IntStream.range(0,books.size())
-                .filter(n->books.get(n).getYearOfPublication()>2007)
-                .map(n->1)
-                .sum();
-        assertEquals(3,numberBookAfter2007);
-
-
-
+        int nbOfBooksAfter2007 = 0;
+        for(Book book : books){
+            if(book.getYearOfPubblication()>2007){
+                nbOfBooksAfter2007++;
+            }
+        }
+        assertEquals(3,nbOfBooksAfter2007);
     }
     @Test
     void testGetListUsingIntStream() {
+        //Given
+        BookDirectory bookDirectory = new BookDirectory();
+        //When
+        List<Book> books = bookDirectory.getList();
+        //Then
+        int nmbOfBooksAfter2007 = IntStream.range(0,books.size())
+                .filter(n->books.get(n).getYearOfPubblication()>2007)
+                .map(n->1)
+                .sum();
+        assertEquals(3,nmbOfBooksAfter2007);
 
     }
     @Test
@@ -35,10 +44,10 @@ public class BookTestSuite {
         //When
         List<Book> books = bookDirectory.getList();
         //Then
-        int numberBookAfter2007 = (int) IntStream.range(0,books.size())
-                .filter(n->books.get(n).getYearOfPublication()>2007)
+        long numberOfBooksAfter2007 = IntStream.range(0,books.size())
+                .filter(n->books.get(n).getYearOfPubblication()>2007)
                 .count();
-        assertEquals(3,numberBookAfter2007);
+        assertEquals(3,numberOfBooksAfter2007);
     }
 
 }

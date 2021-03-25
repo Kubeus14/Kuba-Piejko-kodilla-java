@@ -8,24 +8,21 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class CalculatorTestSuite {
-
+public class CalculatorTestSuite{
     @Test
-    public void testCalculations() {
+    public void testCalculations(){
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
         Calculator calculator = context.getBean(Calculator.class);
-
         //When
-        double addValue = calculator.add(5, 5);
-        double subValue = calculator.sub(20, 8);
-        double mulValue = calculator.mul(2, 4);
-        double divValue = calculator.div(14, 7);
-
+        double addValue = calculator.add(3,4);
+        double subValue = calculator.sub(5,2);
+        double mulValue = calculator.mul(4,4);
+        double divValue = calculator.div(8,2);
         //Then
-        assertEquals(10, addValue);
-        assertEquals(12, subValue);
-        assertEquals(8, mulValue);
-        assertEquals(2, divValue);
+        assertEquals(7,addValue);
+        assertEquals(3,subValue);
+        assertEquals(16,mulValue);
+        assertEquals(4,divValue);
     }
 }

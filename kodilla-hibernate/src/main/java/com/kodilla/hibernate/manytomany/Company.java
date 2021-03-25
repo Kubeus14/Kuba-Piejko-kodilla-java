@@ -1,12 +1,20 @@
-package com.kodilla.hibernate.manttomany;
+package com.kodilla.hibernate.manytomany;
 
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-@NamedNativeQuery(name = "Company.retrieveCompanyNameLike",
-        query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT('%', :NAME , '%')")
+
+@NamedNativeQuery(
+        name = "Company.retrieveCompaniesWithNamesBeginWith",
+        query = "SELECT * FROM companies WHERE MID(company_name, 1, 3) = :FIRSTTHREECHARACTERS",
+        resultClass = Company.class
+)
+@NamedQuery(
+        name = "Company.retrieveCompaniesWithNamesContaining",
+        query = "FROM Company WHERE name like concat('%',:NAME_PART,'%')"
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
@@ -35,6 +43,14 @@ public class Company {
     public String getName() {
         return name;
     }
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "companies")
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    private void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
 
     private void setId(int id) {
         this.id = id;
@@ -42,12 +58,5 @@ public class Company {
 
     private void setName(String name) {
         this.name = name;
-    }
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "companies")
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-    private void setEmployees(List<Employee> employees) {
-        this.employees = employees;
     }
 }

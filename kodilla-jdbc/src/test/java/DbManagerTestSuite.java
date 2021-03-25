@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class DbManagerTestSuite {
     @Test
-    void testConnect() throws SQLException {
+    void testConnection() throws SQLException{
         //Given
         //When
         DbManager dbManager = DbManager.getInstance();
@@ -59,6 +59,6 @@ public class DbManagerTestSuite {
         }
         rs.close();
         statement.close();
-        assertEquals(1, counter);
+        assertEquals(2, counter);
     }
 }

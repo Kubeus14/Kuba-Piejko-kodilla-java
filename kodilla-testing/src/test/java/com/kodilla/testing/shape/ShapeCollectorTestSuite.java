@@ -30,6 +30,7 @@ public class ShapeCollectorTestSuite{
         shapeCollector.addFigure(shape);
         //Then
         assertEquals(1,shapeCollector.getShapeCollection().size());
+
     }
     @DisplayName("When we create result, then we check that figure was deleted")
     @Test

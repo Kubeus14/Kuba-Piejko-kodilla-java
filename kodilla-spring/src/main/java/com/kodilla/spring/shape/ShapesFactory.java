@@ -16,14 +16,14 @@ public class ShapesFactory{
         Shape theShape;
         Random generator = new Random();
         int chosen = generator.nextInt(3);
-        if(chosen==1){
-            theShape = new Triangle();
+        if(chosen==0){
+            theShape=new Circle();
         }
-        else if(chosen==2){
-            theShape = new Circle();
+        else if(chosen==1){
+            theShape=new Triangle();
         }
         else{
-            theShape = new Square();
+            theShape=new Square();
         }
         return theShape;
     }

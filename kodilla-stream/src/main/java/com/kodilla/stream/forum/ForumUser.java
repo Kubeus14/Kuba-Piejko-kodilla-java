@@ -5,15 +5,31 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public final class ForumUser{
-    private final String username;
-    private final String realname;
+    private final String userName;
+    private final String realName;
     private final String location;
     private final Set<ForumUser> friends = new HashSet<>();
 
-    public ForumUser(String username, String realname, String location) {
-        this.username = username;
-        this.realname = realname;
+    public ForumUser(String userName, String realName, String location) {
+        this.userName = userName;
+        this.realName = realName;
         this.location = location;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public Set<ForumUser> getFriends() {
+        return friends;
     }
     public void addFriend(ForumUser user){
         friends.add(user);
@@ -33,27 +49,11 @@ public final class ForumUser{
                 .map(ForumUser::getLocation)
                 .collect(Collectors.toSet());
     }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getRealname() {
-        return realname;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public Set<ForumUser> getFriends() {
-        return friends;
-    }
     @Override
     public String toString() {
         return "ForumUser{" +
-                "username='" + username + '\'' +
-                ", realName='" + realname + '\'' +
+                "username='" + userName + '\'' +
+                ", realName='" + realName + '\'' +
                 ", location='" + location + '\'' +
                 '}';
     }
@@ -63,11 +63,11 @@ public final class ForumUser{
         if (this == o) return true;
         if (!(o instanceof ForumUser)) return false;
         ForumUser forumUser = (ForumUser) o;
-        return username.equals(forumUser.username);
+        return userName.equals(forumUser.userName);
     }
 
     @Override
     public int hashCode() {
-        return username.hashCode();
+        return userName.hashCode();
     }
 }

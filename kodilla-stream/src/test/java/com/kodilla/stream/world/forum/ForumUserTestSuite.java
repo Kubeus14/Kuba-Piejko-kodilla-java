@@ -25,19 +25,19 @@ public class  ForumUserTestSuite {
         user1.addFriend(user3);
         user1.addFriend(user7);
         user1.addFriend(user10);
-
+        //Create relations for user3
         user3.addFriend(user1);
         user3.addFriend(user7);
         user3.addFriend(user2);
         user3.addFriend(user9);
-
+        //Create relations for user7
         user7.addFriend(user1);
         user7.addFriend(user3);
-
+        //Create relations for user10
         user10.addFriend(user1);
-
+        //Create relations for user2
         user2.addFriend(user3);
-
+        //Create relations for user9
         user9.addFriend(user3);
         //Then
         assertEquals(3,user1.getLocationsOfFriends().size());
@@ -59,22 +59,25 @@ public class  ForumUserTestSuite {
         ForumUser user8 = new ForumUser("thebigone", "Clay Small", "Orlando");
         ForumUser user9 = new ForumUser("user121212", "Marisa Frank", "Washington");
         ForumUser user10 = new ForumUser("lawyer", "Lexie John", "Miami");
+
         //When
+        //Create relations for user1
         user1.addFriend(user3);
         user1.addFriend(user7);
         user1.addFriend(user10);
+        //Create relations for user3
         user3.addFriend(user1);
         user3.addFriend(user7);
         user3.addFriend(user2);
         user3.addFriend(user9);
-
+        //Create relations for user7
         user7.addFriend(user1);
         user7.addFriend(user3);
-
+        //Create relations for user10
         user10.addFriend(user1);
-
+        //Create relations for user2
         user2.addFriend(user3);
-
+        //Create relations for user9
         user9.addFriend(user3);
         //Then
         assertEquals(3,user1.getLocationsOfFriendsOfFriends().size());

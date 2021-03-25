@@ -1,9 +1,7 @@
 package com.kodilla.hibernate.tasklist.dao;
 
-
 import com.kodilla.hibernate.task.Task;
 import com.kodilla.hibernate.task.TaskFinancialDetails;
-import com.kodilla.hibernate.task.dao.TaskDao;
 import com.kodilla.hibernate.tasklist.TaskList;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 public class TaskListDaoTestSuite {
     @Autowired
     private TaskListDao taskListDao;
-    @Autowired
-    private TaskDao taskDao;
+
 
     private static final String LISTNAME = "List name";
     private static final String DESCRIPTION = "Description to execute";
@@ -48,16 +45,6 @@ public class TaskListDaoTestSuite {
 
     }
     @Test
-    void testFindByListNameEmptylist(){
-        //Given
-        //When
-        List<TaskList> readTaskList = taskListDao.findByListName(LISTNAME);
-        //Then
-        assertEquals(0,readTaskList.size());
-
-
-    }
-    @Test
     void testTaskListDaoSaveWithTasks() {
         //Given
         Task task = new Task("Test: Learn Hibernate", 14);
@@ -80,7 +67,6 @@ public class TaskListDaoTestSuite {
         assertNotEquals(0, id);
 
         //CleanUp
-        //taskListDao.deleteById(id);
+        taskListDao.deleteById(id);
     }
-
 }

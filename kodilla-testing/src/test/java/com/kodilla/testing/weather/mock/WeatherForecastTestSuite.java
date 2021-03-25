@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class WeatherForecastTestSuite{
     @Mock
-    private Temperatures temperatures;
+    private Temperatures temperaturesMock;
     @Test
     void testCalculateForecastWithMock(){
         //Given
@@ -48,9 +48,9 @@ class WeatherForecastTestSuite{
         when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
         //When
-        double avTem = weatherForecast.averageTemp();
+        double avrTmp = weatherForecast.averageTemp();
         //Then
-        assertEquals(25.56,avTem);
+        assertEquals(25.56,avrTmp);
     }
     @Test
     void testMedianaTempWithMock(){

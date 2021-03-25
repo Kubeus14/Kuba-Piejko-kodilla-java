@@ -9,26 +9,22 @@ public class DrawerTestSuite{
     void testDoDrawingWithCircle() {
         //Given
         Circle circle = new Circle();
-
         //When
         Drawer drawer = new Drawer(circle);
         String result = drawer.doDrawing();
-
         //Then
-        assertEquals("This is a circle", result);
+        assertEquals("This is a circle",result);
     }
 
     @Test
     void testDoDrawingWithTriangle() {
         //Given
         Triangle triangle = new Triangle();
-
         //When
         Drawer drawer = new Drawer(triangle);
         String result = drawer.doDrawing();
-
         //Then
-        assertEquals("This is a triangle", result);
+        assertEquals("This is triangle",result);
     }
 }
 

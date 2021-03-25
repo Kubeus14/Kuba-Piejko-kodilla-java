@@ -27,7 +27,8 @@ public class Country{
     public int hashCode() {
         return countryName.hashCode();
     }
-    public BigDecimal getPeopleQuantity(){
+
+    public BigDecimal getPeopleQuantity() {
         return peopleQuantity;
     }
 }

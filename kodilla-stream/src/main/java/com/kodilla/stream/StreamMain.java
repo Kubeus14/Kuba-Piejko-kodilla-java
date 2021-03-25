@@ -22,39 +22,39 @@ public class StreamMain {                                                     //
     public static void main(String[] args) {
 
         Processor processor = new Processor();
-        Executor codeToExecute = ()-> System.out.println("This is an example text");
+        Executor codeToExecute = ()-> System.out.println("Example text");
         processor.execute(codeToExecute);
 
 
         // [4]
         ExpressionExecutor expressionExecutor = new ExpressionExecutor();
-        expressionExecutor.executeExpression(5,5,(a,b)->a*b);
-        expressionExecutor.executeExpression(5,5,(a,b)->a/b);
-        expressionExecutor.executeExpression(5,5,(a,b)->a+b);
-        expressionExecutor.executeExpression(5,5,(a,b)->a-b);
+        expressionExecutor.executeExpression(3,3,(a,b)->a+b);
+        expressionExecutor.executeExpression(3,3,(a,b)->a-b);
+        expressionExecutor.executeExpression(3,3,(a,b)->a*b);
+        expressionExecutor.executeExpression(3,3,(a,b)->a/b);
         //
-        expressionExecutor.executeExpression(5,5, FunctionalCalculator::multiplyAByB);
-        expressionExecutor.executeExpression(5,5,FunctionalCalculator::divideAByB);
-        expressionExecutor.executeExpression(5,5,FunctionalCalculator::addAToB);
-        expressionExecutor.executeExpression(5,5,FunctionalCalculator::subAFromB);
+        expressionExecutor.executeExpression(4,4, FunctionalCalculator::multiplyAByB);
+        expressionExecutor.executeExpression(4,4,FunctionalCalculator::divideAByB);
+        expressionExecutor.executeExpression(4,4,FunctionalCalculator::addAToB);
+        expressionExecutor.executeExpression(4,4,FunctionalCalculator::subAFromB);
 
 
 
         //exercise 7.1
         PoemBeautifier poemBeautifier = new PoemBeautifier();
-        String beautifulText = poemBeautifier.beautify("Text to beautify",text -> text.toUpperCase());
-        System.out.println(beautifulText);
+        String beautifulText1 = poemBeautifier.beautify("Text to beautify",(text->text.toUpperCase()));
+        System.out.println(beautifulText1);
 
         String beautifulText2 = poemBeautifier.beautify("Text to beautify",text -> "ABC"+text+"ABC");
         System.out.println(beautifulText2);
 
-        String beautifulText3 = poemBeautifier.beautify("Text to beautify",text->text.replace(" ","*"));
+        String beautifulText3 = poemBeautifier.beautify("Text to beautify",text-> text.replace(" ","*"));
         System.out.println(beautifulText3);
 
-        String beautifulText4 = poemBeautifier.beautify("Text to beautify",text -> text.length()+ " letters ***" + text + "*** " + text.length() + " letters");
+        String beautifulText4 = poemBeautifier.beautify("Text to beautify",text -> text.length()+" letters***"+text+ "*** " + text.length() + " letters");
         System.out.println(beautifulText4);
 
-        String beautifulText5 = poemBeautifier.beautify("Text to beautify", (text -> text.concat(String.valueOf(text.hashCode()))));
+        String beautifulText5 = poemBeautifier.beautify("Text to beautify",text->text.concat(String.valueOf(text.hashCode())));
         System.out.println(beautifulText5);
 
         String beautifulText6 = poemBeautifier.beautify("Ble ble ble!!!", (text -> {
@@ -73,7 +73,6 @@ public class StreamMain {                                                     //
                 .collect(Collectors.joining("|"))
         ));
         System.out.println(beautifulText7);
-
         //exercise 7.2
         System.out.println("Using Stream to generate even numbers from 1 to 20");
         NumbersGenerator.generateEven(10);
@@ -83,33 +82,30 @@ public class StreamMain {                                                     //
         Forum forum = new Forum();
         Map<Integer, ForumUser> forumUserMap = forum.getForumUserList().stream()
                 .filter(forumUser -> forumUser.getSex()=='M')
-                .filter(forumUser -> Period.between(forumUser.getBirthdayDate(), LocalDate.now()).getYears()>=20)
+                .filter(forumUser -> Period.between(forumUser.getBirthDate(),LocalDate.now()).getYears()>=20)
                 .filter(forumUser -> forumUser.getPostsQty()>=1)
-                .collect(Collectors.toMap(ForumUser::getIDNumber,ForumUser->ForumUser));
+                .collect(Collectors.toMap(ForumUser::getIdNumber,ForumUser->ForumUser));
         forumUserMap.entrySet().stream()
                 .map(entry->entry.getKey()+" "+entry.getValue())
                 .forEach(System.out::println);
-
 
         //M 7.3 People
         People.getList().stream()
                 .map(String::toUpperCase)
                 .filter(s->s.length()>11)
                 .map(s->s.substring(0,s.indexOf(' ')+2)+" . ")
-                .filter(s->s.substring(0,1).equals('M'))
+                .filter(s->s.substring(0,1).equals("M"))
                 .forEach(System.out::println);
 
 
 
         //M 7.3 Book
         BookDirectory bookDirectory = new BookDirectory();
-        String bookString = bookDirectory.getList().stream()
-                .filter(book->book.getYearOfPublication()>2005)
+        String bookStr = bookDirectory.getList().stream()
+                .filter(book -> book.getYearOfPubblication()>2005)
                 .map(Book::toString)
                 .collect(Collectors.joining(",\n","<<",">>"));
-        System.out.println(bookString);
-
-
+        System.out.println(bookStr);
     }
 }
 
