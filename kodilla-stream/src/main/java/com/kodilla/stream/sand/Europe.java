@@ -8,4 +8,5 @@ public final class Europe implements SandStorage{
         BigDecimal sandQuantity = new BigDecimal("12345678901234567890");
         return sandQuantity;
     }
+
 }

@@ -1,11 +1,11 @@
 package com.kodilla.testing.shape;
 
-public class Square implements Shape{
+class Square implements Shape{
     private final static String name = "Square";
     private double edgeLength;
 
-    public Square(double edgeLength){
-        this.edgeLength=edgeLength;
+    public Square(double edgeLength) {
+        this.edgeLength = edgeLength;
     }
     @Override
     public boolean equals(Object o) {
@@ -22,6 +22,7 @@ public class Square implements Shape{
         long temp = Double.doubleToLongBits(edgeLength);
         return (int) (temp ^ (temp >>> 32));
     }
+
     @Override
     public String getShapeName(){
         return name;

@@ -17,26 +17,25 @@ public class Book{
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getAuthor() {
         return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public int getPublicationYear() {
         return publicationYear;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public void setPublicationYear(int publicationYear) {
         this.publicationYear = publicationYear;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -54,6 +53,7 @@ public class Book{
         result = 31 * result + getPublicationYear();
         return result;
     }
+
     @Override
     public String toString() {
         return "Book{" +

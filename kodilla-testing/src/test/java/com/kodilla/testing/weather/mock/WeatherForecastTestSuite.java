@@ -10,9 +10,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.testng.AssertJUnit.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 class WeatherForecastTestSuite{
@@ -31,9 +31,9 @@ class WeatherForecastTestSuite{
         when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
         //When
-        int quantityOfSensors = weatherForecast.calculateForecast().size();
+        int qtyOfSensors = weatherForecast.calculateForecast().size();
         //Then
-        assertEquals(5,quantityOfSensors);
+        assertEquals(5,qtyOfSensors);
     }
     @Test
     void testAverageTempWithMock(){
@@ -48,9 +48,9 @@ class WeatherForecastTestSuite{
         when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
         //When
-        double avrTmp = weatherForecast.averageTemp();
+        double avgTmp = weatherForecast.averageTemp();
         //Then
-        assertEquals(25.56,avrTmp);
+        assertEquals(25.56,avgTmp);
     }
     @Test
     void testMedianaTempWithMock(){
@@ -65,7 +65,7 @@ class WeatherForecastTestSuite{
         when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
         //When
-        double mdTemp = weatherForecast.medianaTemp();
+        double mdTemp = weatherForecast.medianaTemps();
         //Then
         assertEquals(25.5,mdTemp);
     }

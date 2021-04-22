@@ -11,7 +11,7 @@ public class Country{
         this.peopleQuantity = peopleQuantity;
     }
     public Country(final String countryName){
-        this(countryName, new BigDecimal("1000001"));
+        this(countryName,new BigDecimal("1000001"));
     }
     @Override
     public boolean equals(Object o) {
@@ -27,8 +27,7 @@ public class Country{
     public int hashCode() {
         return countryName.hashCode();
     }
-
-    public BigDecimal getPeopleQuantity() {
+    public BigDecimal getPeopleQuantity(){
         return peopleQuantity;
     }
 }

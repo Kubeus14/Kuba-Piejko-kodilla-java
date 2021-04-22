@@ -1,6 +1,6 @@
 package com;
 
-public class kodilla {
+public class Kodilla {
     public static void main(String[] args){
 
     }

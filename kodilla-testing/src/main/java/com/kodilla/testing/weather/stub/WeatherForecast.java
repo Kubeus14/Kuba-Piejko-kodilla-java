@@ -22,10 +22,10 @@ public class WeatherForecast{
             resultMap.put(temperature.getKey(),temperature.getValue());
             sum+=temperature.getValue();
         }
-        double avg = sum/resultMap.size();
+        double avg = sum/(double)resultMap.size();
         return avg;
     }
-    public double medianaTemp(){
+    public double medianaTemps(){
         List<Double> temps = new ArrayList<>(temperatures.getTemperatures().values());
         Collections.sort(temps);
         int medium = temps.size()/2;

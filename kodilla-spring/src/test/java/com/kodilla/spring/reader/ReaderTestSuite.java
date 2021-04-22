@@ -13,8 +13,7 @@ class ReaderTestSuite {
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext(ReaderConfig.class);
         Reader reader = context.getBean(Reader.class);
-
-        //When & Then
+        //When
         reader.read();
     }
     @Test

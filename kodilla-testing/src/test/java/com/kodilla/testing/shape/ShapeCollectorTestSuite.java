@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 public class ShapeCollectorTestSuite{
     @BeforeEach
@@ -25,7 +25,7 @@ public class ShapeCollectorTestSuite{
     public void testAddFigure(){
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Shape shape = new Square(4);
+        Shape shape = new Circle(5);
         //When
         shapeCollector.addFigure(shape);
         //Then
@@ -56,6 +56,7 @@ public class ShapeCollectorTestSuite{
         Shape shapeResult = shapeCollector.getFigure(0);
         //Then
         assertEquals(shape,shapeResult);
+
     }
     @DisplayName("When we create shapeResultList, then we check that is equal with shapeList")
     @Test

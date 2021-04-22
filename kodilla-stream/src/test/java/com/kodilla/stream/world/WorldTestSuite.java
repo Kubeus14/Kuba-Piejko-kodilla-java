@@ -4,30 +4,29 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class WorldTestSuite{
     @Test
     void testGetPeopleQuantity(){
         //Given
         World world = new World();
+        Continent northAmerica = new Continent("North America");
 
-        Continent europa = new Continent("Europa");
+        Country usa = new Country("USA");
+        Country canada = new Country("Canada");
+        Country mexico = new Country("Mexico");
 
-        Country italy = new Country("Italy");
-        Country germany = new Country("Germany");
-        Country spain = new Country("Spain");
+        world.addContinent(northAmerica);
 
-        world.addContinent(europa);
-
-        europa.addCountry(italy);
-        europa.addCountry(germany);
-        europa.addCountry(spain);
-
+        northAmerica.addCountry(usa);
+        northAmerica.addCountry(canada);
+        northAmerica.addCountry(mexico);
         //When
         BigDecimal totalPeople = world.getPeopleQuantity();
         //Then
-        BigDecimal totalExpectedPeople = new BigDecimal("3000003");
-        assertEquals(totalExpectedPeople,totalPeople);
+        BigDecimal expectedPeople = new BigDecimal("3000003");
+        assertEquals(expectedPeople,totalPeople);
+
     }
 }

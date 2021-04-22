@@ -10,21 +10,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class BookDirectoryTestSuite {
+        private LibraryDatabase libraryDatabaseMock;
+        private BookLibrary bookLibrary;
 
-    private LibraryDatabase libraryDatabaseMock;
-    private BookLibrary bookLibrary;
-
-    @BeforeEach
-    public void beforeEachTest(){
-        libraryDatabaseMock = mock(LibraryDatabase.class);
-        bookLibrary = new BookLibrary(libraryDatabaseMock);
-    }
-
+        @BeforeEach
+        public void beforeEachTest(){
+            libraryDatabaseMock = mock(LibraryDatabase.class);
+            bookLibrary = new BookLibrary(libraryDatabaseMock);
+        }
     @Test
     public void testListBooksWithConditionsReturnList() {
-
-        // Given
-        List<Book> resultListOfBooks = new ArrayList<Book>();
+        //Given
+        List<Book> resultListOfBooks = new ArrayList<>();
         Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
         Book book2 = new Book("Secretaries and Directors", "Dilbert Michigan", 2012);
         Book book3 = new Book("Secret life of programmers", "Steve Wolkowitz", 2016);
@@ -33,14 +30,11 @@ public class BookDirectoryTestSuite {
         resultListOfBooks.add(book2);
         resultListOfBooks.add(book3);
         resultListOfBooks.add(book4);
-        when(libraryDatabaseMock.listBooksWithCondition("Secret"))
-                .thenReturn(resultListOfBooks);
-
-        // When
-        List<Book> theListOfBooks = bookLibrary.listBooksWithCondition("Secret");
-
-        // Then
-        assertEquals(4, theListOfBooks.size());
+        when(libraryDatabaseMock.listBooksWithCondition("Secret")).thenReturn(resultListOfBooks);
+        //When
+        List<Book> returnListOfBooks = bookLibrary.listBooksWithCondition("Secret");
+        //Then
+        assertEquals(4,returnListOfBooks.size());
     }
 
     @Test

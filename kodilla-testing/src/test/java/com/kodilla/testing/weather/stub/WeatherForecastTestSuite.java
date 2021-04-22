@@ -2,18 +2,18 @@ package com.kodilla.testing.weather.stub;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.testng.AssertJUnit.assertEquals;
 
-class WeatherForecastTestSuite{
+public class WeatherForecastTestSuite{
     @Test
-    void testCalculateForecastWithStub(){
+    void testCalculateForecastWithStub() {
         //Given
         Temperatures temperatures = new TemperaturesStub();
         WeatherForecast weatherForecast = new WeatherForecast(temperatures);
         //When
-        int quantityOfSensors = weatherForecast.calculateForecast().size();
+        int qtyOfSensors = weatherForecast.calculateForecast().size();
         //Then
-        assertEquals(5,quantityOfSensors);
+        assertEquals(5,qtyOfSensors);
     }
     @Test
     void testAverageTempWithStub(){
@@ -21,20 +21,17 @@ class WeatherForecastTestSuite{
         Temperatures temperatures = new TemperaturesStub();
         WeatherForecast weatherForecast = new WeatherForecast(temperatures);
         //When
-        double avrTemp = weatherForecast.averageTemp();
+        double avgTemp = weatherForecast.averageTemp();
         //Then
-        assertEquals(25.56,avrTemp);
-
-
+        assertEquals(25.56,avgTemp);
     }
     @Test
-    void testMedianaTempWithStub(){
+    void testMediumTempWithStub(){
         //Given
         Temperatures temperatures = new TemperaturesStub();
         WeatherForecast weatherForecast = new WeatherForecast(temperatures);
         //When
-        double medTemp = weatherForecast.medianaTemp();
-        //Then
-        assertEquals(25.5,medTemp);
+        double medTemp = weatherForecast.medianaTemps();
     }
+
 }

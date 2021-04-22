@@ -8,6 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 @SpringBootTest
 class KodillaSpringApplicationTests {
 
@@ -21,12 +22,11 @@ class KodillaSpringApplicationTests {
         //Then
         assertEquals("This is a circle.",name);
     }
-
     @Test
     void testTriangleLoadedIntoContainer() {
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
-        Shape shape = (Shape) context.getBean("triangle");
+        Shape shape = (Shape)context.getBean("triangle");
         //When
         String name = shape.getShapeName();
         //Then
@@ -36,7 +36,7 @@ class KodillaSpringApplicationTests {
     void testSquareLoadedIntoContainer() {
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
-        Shape shape = (Shape) context.getBean("createSquare");
+        Shape shape = (Shape)context.getBean("createSquare");
         //When
         String name = shape.getShapeName();
         //Then
@@ -50,7 +50,8 @@ class KodillaSpringApplicationTests {
         //When
         String name = shape.getShapeName();
         //Then
-        System.out.println("Chosen: "+name);
+        System.out.println("Chosen shape is: "+name);
+
     }
     @Test
     void contextLoads() {

@@ -2,7 +2,9 @@ package com.kodilla.exception.io;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.testng.Assert.assertThrows;
 
 class FileReaderTestSuite {
 
@@ -10,15 +12,15 @@ class FileReaderTestSuite {
     void testReadFile(){
         //Given
         FileReader fileReader = new FileReader();
-        //When and then
+        //When
         assertDoesNotThrow(()->fileReader.readFile());
     }
     @Test
     void whenFileDoesntExistsReadFileShouldThrowException(){
         //Given
         FileReader fileReader = new FileReader();
-        String fileName = "no file";
-        //When and then
+        String fileName = "this_file_not_exists";
+        //When
         assertThrows(FileReaderException.class,()->fileReader.readFile(fileName));
     }
     @Test

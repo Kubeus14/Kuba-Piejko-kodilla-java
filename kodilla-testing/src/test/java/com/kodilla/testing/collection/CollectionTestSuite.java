@@ -4,12 +4,13 @@ package com.kodilla.testing.collection;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.testng.Assert.assertEquals;
 
 public class CollectionTestSuite{
     private static OddNumbersExterminator oddNumbersExterminator;
@@ -22,11 +23,12 @@ public class CollectionTestSuite{
         System.out.println("Test case: after");
     }
     @BeforeAll
-    public static void beforeAll(){
+    public static void beforeClass(){
         oddNumbersExterminator = new OddNumbersExterminator();
     }
+    @DisplayName("when create emptyList and resultList, we check if they are equal")
     @Test
-    void testOddNumbersExterminatorEmptyList(){
+    public void testOddNumbersExterminatorEmptyList () {
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         List<Integer> emptyList = new ArrayList<>();
@@ -34,10 +36,10 @@ public class CollectionTestSuite{
         List<Integer> resultList = oddNumbersExterminator.exterminate(emptyList);
         //Then
         assertEquals(emptyList,resultList);
-
     }
+    @DisplayName("when we create resultList, then we check if it equals secondList")
     @Test
-    void testOddNumbersExterminatorNormalList(){
+    public void testOddNumbersExterminatorNormalList () {
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         List<Integer> normalList = new ArrayList<>();
@@ -53,10 +55,10 @@ public class CollectionTestSuite{
         secondList.add(4);
         secondList.add(14);
         secondList.add(46);
+
         //When
         List<Integer> resultList = oddNumbersExterminator.exterminate(normalList);
         //Then
         assertEquals(secondList,resultList);
     }
-
 }
