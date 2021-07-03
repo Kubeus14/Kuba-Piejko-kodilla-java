@@ -45,7 +45,7 @@ public class StoredProcTestSuite {
         statement.execute(sqlProcedureCall);
 
         //Then
-        String sqlCheckTable = "SELECT COUNT(*) AS HOW_MANY FROM books WHERE bestseller is null";
+        String sqlCheckTable = "SELECT COUNT(*) AS HOW_MANY FROM BOOKS WHERE BESTSELLER IS NOT NULL";
         ResultSet rs = statement.executeQuery(sqlCheckTable);
         int howMany = -1;
         if (rs.next()) {
