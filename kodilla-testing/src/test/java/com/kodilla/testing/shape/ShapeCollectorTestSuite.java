@@ -25,12 +25,11 @@ public class ShapeCollectorTestSuite{
     public void testAddFigure(){
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Shape shape = new Circle(5);
+        Shape shape = new Square(4);
         //When
         shapeCollector.addFigure(shape);
         //Then
         assertEquals(1,shapeCollector.getShapeCollection().size());
-
     }
     @DisplayName("When we create result, then we check that figure was deleted")
     @Test
@@ -56,7 +55,6 @@ public class ShapeCollectorTestSuite{
         Shape shapeResult = shapeCollector.getFigure(0);
         //Then
         assertEquals(shape,shapeResult);
-
     }
     @DisplayName("When we create shapeResultList, then we check that is equal with shapeList")
     @Test

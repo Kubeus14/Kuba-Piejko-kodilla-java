@@ -1,16 +1,12 @@
 package com.kodilla.testing.collection;
 
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CollectionTestSuite{
     private static OddNumbersExterminator oddNumbersExterminator;
@@ -20,7 +16,7 @@ public class CollectionTestSuite{
     }
     @AfterEach
     public void after(){
-        System.out.println("Test case: after");
+        System.out.println("Test case: end");
     }
     @BeforeAll
     public static void beforeClass(){
@@ -37,7 +33,6 @@ public class CollectionTestSuite{
         //Then
         assertEquals(emptyList,resultList);
     }
-    @DisplayName("when we create resultList, then we check if it equals secondList")
     @Test
     public void testOddNumbersExterminatorNormalList () {
         //Given
@@ -58,6 +53,7 @@ public class CollectionTestSuite{
 
         //When
         List<Integer> resultList = oddNumbersExterminator.exterminate(normalList);
+
         //Then
         assertEquals(secondList,resultList);
     }

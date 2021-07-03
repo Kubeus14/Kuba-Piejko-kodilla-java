@@ -10,19 +10,20 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.testng.AssertJUnit.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-class WeatherForecastTestSuite{
+public class WeatherForecastTestSuite {
     @Mock
     private Temperatures temperaturesMock;
+
     @Test
-    void testCalculateForecastWithMock(){
+    void testCalculateForecastWithMock() {
         //Given
         Temperatures temperaturesMock = mock(Temperatures.class);
-        Map<String,Double> temperaturesMap = new HashMap<>();
+        Map<String,Double> temperaturesMap=new HashMap<>();
         temperaturesMap.put("Rzeszów",25.5);
         temperaturesMap.put("Krakow", 26.2);
         temperaturesMap.put("Wroclaw", 24.8);
@@ -69,5 +70,4 @@ class WeatherForecastTestSuite{
         //Then
         assertEquals(25.5,mdTemp);
     }
-
 }

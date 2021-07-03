@@ -8,13 +8,13 @@ import static org.testng.Assert.assertThrows;
 
 class FileReaderTestSuite {
 
-    @Test
-    void testReadFile(){
-        //Given
-        FileReader fileReader = new FileReader();
-        //When
-        assertDoesNotThrow(()->fileReader.readFile());
-    }
+//    @Test
+//    void testReadFile(){
+//        //Given
+//        FileReader fileReader = new FileReader();
+//        //When
+//        assertDoesNotThrow(()->fileReader.readFile());
+//    }
     @Test
     void whenFileDoesntExistsReadFileShouldThrowException(){
         //Given

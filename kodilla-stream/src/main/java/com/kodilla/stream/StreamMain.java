@@ -6,6 +6,7 @@ import com.kodilla.stream.book.BookDirectory;
 import com.kodilla.stream.forumuser.Forum;
 import com.kodilla.stream.forumuser.ForumUser;
 import com.kodilla.stream.iterate.NumbersGenerator;
+import com.kodilla.stream.lambda.ExecuteSaySomething;
 import com.kodilla.stream.lambda.Executor;
 import com.kodilla.stream.lambda.ExpressionExecutor;
 import com.kodilla.stream.lambda.Processor;
@@ -21,24 +22,21 @@ public class StreamMain {                                                     //
 
     public static void main(String[] args) {
 
-        Processor processor = new Processor();
-        Executor codeToExecute = ()-> System.out.println("Simple text");
-        processor.execute(codeToExecute);
+       Processor processor = new Processor();
+       Executor codeToExecute = ()-> System.out.println("This is simple text");
+       processor.execute(codeToExecute);
 
         // [4]
         ExpressionExecutor expressionExecutor = new ExpressionExecutor();
-        expressionExecutor.executeExpression(3,3,(a,b)->a*b);
-        expressionExecutor.executeExpression(3,3,(a,b)->a/b);
-        expressionExecutor.executeExpression(3,3,(a,b)->a+b);
+        expressionExecutor.executeExpression(4,4,(a,b)->a+b);
         expressionExecutor.executeExpression(3,3,(a,b)->a-b);
+        expressionExecutor.executeExpression(5,5,(a,b)->a*b);
+        expressionExecutor.executeExpression(2,2,(a,b)->a/b);
         //
-        expressionExecutor.executeExpression(4,4, FunctionalCalculator::multiplyAByB);
+        expressionExecutor.executeExpression(3,3,FunctionalCalculator::addAToB);
         expressionExecutor.executeExpression(4,4,FunctionalCalculator::divideAByB);
-        expressionExecutor.executeExpression(4,4,FunctionalCalculator::addAToB);
-        expressionExecutor.executeExpression(4,4,FunctionalCalculator::subAFromB);
-
-
-
+        expressionExecutor.executeExpression(5,5,FunctionalCalculator::subAFromB);
+        expressionExecutor.executeExpression(7,7,FunctionalCalculator::multiplyAByB);
         //exercise 7.1
         PoemBeautifier poemBeautifier = new PoemBeautifier();
         String beautifulText1 = poemBeautifier.beautify("Text to beautify",text -> text.toUpperCase());
@@ -74,7 +72,7 @@ public class StreamMain {                                                     //
         System.out.println(beautifulText7);
         //exercise 7.2
         System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
+        NumbersGenerator.generateEven(10);
 
 
         //exercise 7.3
