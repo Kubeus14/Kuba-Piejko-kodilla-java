@@ -25,10 +25,10 @@ public class FacebookTestingApp {
 
         WebElement selectComboMonth = driver.findElement(By.xpath(XPATH_MONTH));
         Select selectMonth = new Select(selectComboMonth);
-        selectMonth.selectByIndex(11);
+        selectMonth.selectByIndex(10);
 
         WebElement selectComboYear = driver.findElement(By.xpath(XPATH_YEAR));
         Select selectYear = new Select(selectComboYear);
-        selectYear.selectByIndex(20);
+        selectYear.selectByIndex(18);
     }
 }
