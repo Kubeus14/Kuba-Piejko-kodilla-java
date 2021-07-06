@@ -1,3 +1,5 @@
+
+
 import com.kodilla.jdbc.DbManager;
 import org.junit.jupiter.api.Test;
 
@@ -40,7 +42,7 @@ public class DbManagerTestSuite {
         assertEquals(0, counter);
     }
     @Test
-    public void testSelectUsersAndPosts()throws SQLException{
+    public void testSelectUsersAndPosts()throws SQLException {
         //Given
         DbManager dbManager = DbManager.getInstance();
 
@@ -62,3 +64,5 @@ public class DbManagerTestSuite {
         assertEquals(0, counter);
     }
 }
+
+

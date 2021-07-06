@@ -10,11 +10,11 @@ public class DbManager{
     private static DbManager dbManagerInstance;
     private DbManager() throws SQLException{
         Properties connectionProps = new Properties();
-        connectionProps.put("user", "kodilla_user");
-        connectionProps.put("password", "kodilla_password");
+        connectionProps.put("user", "root");
+        connectionProps.put("password", "BaT=27mcR=73");
         conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/kodilla_course?serverTimezone=Europe/Warsaw" +  // [8]
-                        "&useSSL=False",connectionProps
+                        "&useSSL=False&allowPublicKeyRetrieval=true",connectionProps
         );
     }
     public static DbManager getInstance() throws SQLException{
@@ -27,3 +27,6 @@ public class DbManager{
         return conn;
     }
 }
+
+
+

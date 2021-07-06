@@ -29,7 +29,7 @@ public class CollectionTestSuite{
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         List<Integer> emptyList = new ArrayList<>();
         //When
-        List<Integer> resultList = oddNumbersExterminator.exterminate(emptyList);
+        List<Integer> resultList = new ArrayList<>();
         //Then
         assertEquals(emptyList,resultList);
     }
